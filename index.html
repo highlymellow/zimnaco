@@ -997,6 +997,23 @@
       heroVideo.muted = true;
       heroVideo.defaultMuted = true;
 
+      // Safari ignores the `autoplay` HTML attribute — explicit play() call is required.
+      // We attempt it immediately, then again on canplay in case the source isn't ready yet.
+      function attemptPlay() {
+        const p = heroVideo.play();
+        if (p !== undefined) {
+          p.catch(function() {
+            // Autoplay blocked (e.g. power-save mode); try again on next user interaction
+            document.addEventListener('click', function retry() {
+              heroVideo.play();
+              document.removeEventListener('click', retry);
+            }, { once: true });
+          });
+        }
+      }
+      heroVideo.addEventListener('canplay', attemptPlay, { once: true });
+      attemptPlay();
+
       // Canvas swap: when video ends, freeze final frame on canvas so no play button appears
       let hasSwapped = false;
       function swapToCanvas() {
