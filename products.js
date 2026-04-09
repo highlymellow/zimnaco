@@ -11,7 +11,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '185/65 R15',
-    image: 'images/tire_summer.png',
+    image: 'https://images.unsplash.com/photo-1599406086771-47fb2bf12a7d?auto=format&fit=crop&q=80&w=400',
     description: 'A summer tire perfectly adapted for light commercial vehicles and vans. Optimized rolling resistance for excellent fuel efficiency.'
   },
   {
@@ -26,7 +26,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '205/55 R16',
-    image: 'images/tire_all_season.png',
+    image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=400',
     description: 'The all-season touring tire built to help you master your journey, no matter the season. Best-in-class wet grip.'
   },
   {
@@ -39,9 +39,9 @@ const products = [
     reviews: 567,
     season: 'All year',
     year: '2025',
-    vehicleType: 'Deliver',
+    vehicleType: 'Delivery / Van',
     size: '195/70 R15',
-    image: 'images/tire_all_season.png',
+    image: 'https://images.unsplash.com/photo-1600705054366-06eb1af52e1c?auto=format&fit=crop&q=80&w=400',
     description: 'Safety in all weather conditions, excellent mileage, and robustness. A highly durable commercial tire.'
   },
   {
@@ -56,7 +56,7 @@ const products = [
     year: '2024',
     vehicleType: '4x4',
     size: '225/60 R18',
-    image: 'images/tire_performance.png',
+    image: 'https://images.unsplash.com/photo-1590487538946-bdeb26fba471?auto=format&fit=crop&q=80&w=400',
     description: 'Exceptional grip and safety: 1st in dry and wet braking. Specially designed for premium SUVs.'
   },
   {
@@ -71,7 +71,7 @@ const products = [
     year: '2026',
     vehicleType: 'Performance',
     size: '245/45 R19',
-    image: 'images/tire_winter.png',
+    image: 'https://images.unsplash.com/photo-1579731454508-3abeb5c83fbf?auto=format&fit=crop&q=80&w=400',
     description: 'The highest level of winter performance codeveloped with the best car makers. Unrivalled snow control.'
   },
   {
@@ -86,7 +86,7 @@ const products = [
     year: '2025',
     vehicleType: 'Standard car',
     size: '235/40 R18',
-    image: 'images/tire_performance.png',
+    image: 'https://images.unsplash.com/photo-1598287515152-4424754ac00a?auto=format&fit=crop&q=80&w=400',
     description: 'Luxurious comfort with superior wet braking. Refined styling for the true enthusiast.'
   },
   {
@@ -101,7 +101,7 @@ const products = [
     year: '2024',
     vehicleType: 'Performance',
     size: '225/45 R17',
-    image: 'images/tire_summer.png',
+    image: 'https://images.unsplash.com/photo-1610444585141-831e7844cc96?auto=format&fit=crop&q=80&w=400',
     description: 'Advanced 4D Nano Design tread compound. Maximized grip and wear performance for sports cars.'
   },
   {
@@ -116,7 +116,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '205/55 R16',
-    image: 'images/tire_winter.png',
+    image: 'https://images.unsplash.com/photo-1517524956381-8ed0cd19bf08?auto=format&fit=crop&q=80&w=400',
     description: 'Perfect winter performance under any condition. Excellent snow traction and braking.'
   },
   {
@@ -131,7 +131,7 @@ const products = [
     year: '2025',
     vehicleType: 'Performance',
     size: '245/40 R18',
-    image: 'images/tire_summer.png',
+    image: 'https://images.unsplash.com/photo-1590487373801-9a997d4c2edb?auto=format&fit=crop&q=80&w=400',
     description: 'A champion in grip and steering precision. Designed to deliver an engaging driving experience.'
   },
   {
@@ -146,7 +146,7 @@ const products = [
     year: '2026',
     vehicleType: '4x4',
     size: '265/70 R17',
-    image: 'images/tire_offroad.png',
+    image: 'https://images.unsplash.com/photo-1563200781-54de5c2a1ce3?auto=format&fit=crop&q=80&w=400',
     description: 'The ultimate all-terrain tire built to conquer any surface. Long-lasting treadwear.'
   },
   {
@@ -161,7 +161,7 @@ const products = [
     year: '2026',
     vehicleType: 'Performance',
     size: '19 inch',
-    image: 'images/rim_bbs.png',
+    image: 'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=400',
     description: 'Classic multi-spoke design reborn in a modern 2-piece forged configuration.'
   },
   {
@@ -176,7 +176,7 @@ const products = [
     year: '2026',
     vehicleType: 'Performance',
     size: '18 inch',
-    image: 'images/rim_enkei.png',
+    image: 'https://images.unsplash.com/photo-1581452292770-571216d1ba56?auto=format&fit=crop&q=80&w=400',
     description: 'Legendary lightweight racing wheel developed using Enkei’s MAT process.'
   },
   {
@@ -191,7 +191,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: 'Universal',
-    image: 'images/acc_gauge.png',
+    image: 'https://images.unsplash.com/photo-1605230985854-ce523c961ebd?auto=format&fit=crop&q=80&w=400',
     description: 'Accurately measure and maintain ideal tire pressure to enhance safety and fuel efficiency.'
   },
   {
@@ -206,7 +206,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '15 oz',
-    image: 'images/acc_shine.png',
+    image: 'https://images.unsplash.com/photo-1622177301033-b152ebba9261?auto=format&fit=crop&q=80&w=400',
     description: 'Deep, dark, and glossy synthetic polymer formula provides a long-lasting wet look.'
   }
 ];

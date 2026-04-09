@@ -112,7 +112,7 @@
   
   .sidebar { width: 280px; flex-shrink: 0; }
   .filter-group { margin-bottom: 40px; }
-  .filter-header { font-family: var(--font-display); font-size: 20px; font-weight: 600; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--off-white); display: flex; justify-content: space-between; align-items: center; cursor: pointer;}
+  .filter-header { font-family: var(--font-body); font-size: 16px; font-weight: 600; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--off-white); display: flex; justify-content: space-between; align-items: center; cursor: pointer;}
   .filter-header svg { width: 16px; height: 16px; stroke: var(--black); stroke-width: 2; fill: none; transition: transform 0.3s; }
   
   .checkbox-label { display: flex; align-items: center; position: relative; padding-left: 32px; margin-bottom: 16px; cursor: pointer; font-size: 15px; color: var(--silver-800); user-select: none; transition: color 0.2s; }
@@ -214,15 +214,18 @@
         <img src="logo.png" alt="Zimnaco" class="nav-logo">
       </a>
       <div class="nav-links">
-        <a data-category="tires">Tires</a>
-        <a data-category="rims">Rims</a>
-        <a data-category="accessories">Accessories</a>
+        <a href="#store" data-category="tires">Tires</a>
+        <a href="#store" data-category="rims">Rims</a>
+        <a href="#store" data-category="accessories">Accessories</a>
       </div>
       <div class="nav-actions">
-        <div class="nav-search">
+        <div class="nav-search" id="desktopSearch">
           <input type="text" placeholder="Search by brand or series...">
           <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
+        <button class="mobile-search-btn" id="mobileSearchBtn">
+          <svg viewBox="0 0 24 24" fill="none" width="20" height="20" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
         <div class="mobile-cart" id="mobileCartBtn">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
           <span>0</span>
@@ -232,6 +235,9 @@
           <span>Your cart (0)</span>
         </div>
       </div>
+    </div>
+    <div class="mobile-search-bar" id="mobileSearchBar">
+      <input type="text" id="mobileSearchInput" placeholder="Search...">
     </div>
   </nav>
 
@@ -330,6 +336,20 @@
             <span class="checkbox-text">Delivery / Van</span>
           </label>
         </div>
+
+        <div class="filter-group">
+          <div class="filter-header" style="cursor: default;">
+            Max Price
+            <span id="priceLabel" style="font-size: 14px; font-weight: 400;">$2000</span>
+          </div>
+          <div class="price-slider-wrap" style="padding: 10px 0;">
+            <input type="range" id="priceRange" min="0" max="2000" value="2000" style="width: 100%; accent-color: var(--navy-500);">
+            <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--silver-500); margin-top: 8px;">
+              <span>$0</span>
+              <span>$2000+</span>
+            </div>
+          </div>
+        </div>
       </aside>
 
       <main class="store-main">
@@ -340,28 +360,25 @@
 
         <div class="size-selector-panel reveal">
           <h3>Tire Size Matcher</h3>
-          <div class="size-grid">
+          <div class="size-grid" style="grid-template-columns: 1fr 1fr 1fr;">
             <div class="size-col">
               <label>Width</label>
-              <select><option>Select Width</option><option>185</option><option>195</option><option>205</option><option>225</option><option>235</option><option>245</option><option>265</option></select>
+              <select id="sizeWidth"><option value="">All Widths</option><option value="185">185</option><option value="195">195</option><option value="205">205</option><option value="225">225</option><option value="235">235</option><option value="245">245</option><option value="265">265</option></select>
             </div>
             <div class="size-col">
               <label>Aspect Ratio</label>
-              <select><option>Select Ratio</option><option>40</option><option>45</option><option>55</option><option>60</option><option>65</option><option>70</option></select>
+              <select id="sizeRatio"><option value="">All Ratios</option><option value="40">40</option><option value="45">45</option><option value="55">55</option><option value="60">60</option><option value="65">65</option><option value="70">70</option></select>
             </div>
             <div class="size-col">
               <label>Rim Diameter</label>
-              <select><option>Select Rim</option><option>R15</option><option>R16</option><option>R17</option><option>R18</option><option>R19</option></select>
-            </div>
-            <div class="size-col" style="padding-bottom: 5px;">
-              <button class="btn btn--primary" style="padding: 10px 24px; font-size: 13px;" onclick="document.querySelector('#sortSelect').scrollIntoView({behavior: 'smooth'})">Find Tires</button>
+              <select id="sizeRim"><option value="">All Rims</option><option value="R15">R15</option><option value="R16">R16</option><option value="R17">R17</option><option value="R18">R18</option><option value="R19">R19</option></select>
             </div>
           </div>
         </div>
 
         <div class="controls-row reveal">
           <div class="results-header" style="margin:0;">
-            <span class="results-title">results (0)</span>
+            <span class="results-title" style="opacity: 0; transition: opacity 0.3s;"></span>
           </div>
           <div class="sort-control">
             Sort By: 

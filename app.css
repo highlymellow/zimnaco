@@ -51,13 +51,27 @@
     justify-content: center;
 }
 
-@media (max-width: 768px) {
-    .hamburger-menu, .mobile-cart { display: block; }
-}
-
 .mobile-nav-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 10000;
     opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.mobile-search-btn {
+    display: none; background: none; border: none; cursor: pointer; padding: 4px;
+}
+.mobile-search-bar {
+    position: absolute; top: 100%; left: 0; width: 100%; background: var(--navy-900);
+    padding: 0 5%; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mobile-search-bar.active { max-height: 70px; padding: 15px 5%; }
+.mobile-search-bar input {
+    width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+    background: var(--navy-800); color: white; font-family: var(--font-body); font-size: 14px; outline: none;
+}
+@media (max-width: 768px) {
+    .hamburger-menu, .mobile-cart, .mobile-search-btn { display: block; }
+    #desktopSearch { display: none; }
+    .nav-actions { gap: 15px; }
 }
 .mobile-nav-overlay.active { opacity: 1; pointer-events: auto; }
 
@@ -185,3 +199,34 @@
 .empty-state { text-align: center; padding: 60px 20px; grid-column: 1 / -1; }
 .empty-state h3 { color: white; font-size: 24px; margin-bottom: 10px; }
 .empty-state p { color: var(--silver-400); margin-bottom: 20px; }
+
+/* Filter Collapsible Logic */
+.filter-group.collapsed .checkbox-label { display: none; }
+.filter-group.collapsed .filter-header svg { transform: rotate(180deg); }
+.filter-group .filter-header svg { transition: transform 0.3s ease; }
+
+/* Bounce Animation */
+@keyframes cartBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+.mobile-cart.bounce, .nav-cart.bounce { animation: cartBounce 0.3s ease; }
+
+/* Add to Cart Button States */
+.add-to-cart-btn {
+    transition: all 0.3s ease;
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+}
+.add-to-cart-btn.added {
+    background-color: var(--accent-green) !important;
+    color: white !important;
+}
+
+/* Tire Diagram Modal */
+.tire-diagram {
+    display: flex; align-items: center; gap: 15px; padding: 15px;
+    background: rgba(255,255,255,0.02); border-radius: 8px; margin-bottom: 30px;
+    border: 1px solid rgba(255,255,255,0.05); color: var(--silver-400); font-size: 13px;
+}
+.tire-diagram svg { color: var(--silver-500); }

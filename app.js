@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ── STATE ──
     let state = {
-        category: 'tires', // 'tires', 'rims', 'accessories'
+        category: 'tires',
         cart: JSON.parse(localStorage.getItem('zimnaco_cart')) || [],
         searchQuery: '',
         filters: {
@@ -11,7 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
             vehicleType: [],
             year: []
         },
-        sortOrder: 'newest' // 'price-asc', 'price-desc', 'rating', 'newest'
+        sizeFilter: {
+            width: '',
+            ratio: '',
+            rim: ''
+        },
+        maxPrice: 2000,
+        sortOrder: 'newest'
     };
 
     // ── DOM ELEMENTS ──
@@ -44,22 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="close-modal" id="closeProductModal">&times;</button>
             <div class="product-modal-content" id="productModalContent"></div>
         </div>
-
-        <!-- Mobile Nav Menu -->
-        <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
-        <div class="mobile-nav-drawer" id="mobileNavDrawer">
-            <button class="close-mobile-nav" id="closeMobileNav">&times;</button>
-            <div class="mobile-nav-links">
-                <a href="#store" data-category="tires">Tires</a>
-                <a href="#store" data-category="rims">Rims</a>
-                <a href="#store" data-category="accessories">Accessories</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
     `);
 
-    // ── RE-QUERY NEW DOM ELEMENTS ──
     const cartDrawer = document.getElementById('cartDrawer');
     const cartOverlay = document.getElementById('cartOverlay');
     const cartItemsContainer = document.getElementById('cartItems');
@@ -67,8 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const productModal = document.getElementById('productModal');
     const productModalOverlay = document.getElementById('productModalOverlay');
     const productModalContent = document.getElementById('productModalContent');
-    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
 
     // ── INITIALIZATION ──
     initNav();
@@ -77,6 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initSearch();
     initCartUI();
     renderProducts();
+
+    // ── DATA FORMATTING ──
+    function capitalize(str) {
+        if (!str) return '';
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
 
     // ── RENDER PRODUCTS ──
     function renderProducts() {
@@ -94,7 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Filter Matches
+            // Price Match
+            if (p.price > state.maxPrice) return false;
+
+            // Size Matcher
+            if (state.sizeFilter.width && !p.size.includes(state.sizeFilter.width)) return false;
+            if (state.sizeFilter.ratio && !p.size.includes(state.sizeFilter.ratio)) return false;
+            if (state.sizeFilter.rim && !p.size.includes(state.sizeFilter.rim)) return false;
+
+            // Checkbox Filter Matches
             if (state.filters.season.length > 0 && !state.filters.season.includes(p.season)) return false;
             if (state.filters.vehicleType.length > 0 && !state.filters.vehicleType.includes(p.vehicleType)) return false;
             if (state.filters.year.length > 0 && !state.filters.year.includes(p.year.toString())) return false;
@@ -107,12 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (state.sortOrder === 'price-asc') return a.price - b.price;
             if (state.sortOrder === 'price-desc') return b.price - a.price;
             if (state.sortOrder === 'rating') return b.rating - a.rating;
-            // 'newest' defaults to ID desc
+            // 'newest' uses ID desc
             return b.id - a.id; 
         });
 
         // Update counts
-        if(resultsTitle) resultsTitle.innerHTML = `results <strong>(${filtered.length})</strong>`;
+        if(resultsTitle) {
+            resultsTitle.innerHTML = `results (${filtered.length})`;
+            resultsTitle.style.opacity = '1';
+        }
         
         // Build HTML
         if (filtered.length === 0) {
@@ -136,11 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <img src="${p.image}" alt="${p.brand} ${p.title}" loading="lazy">
                 </div>
-                <div class="card-brand">${p.brand}</div>
+                <div class="card-brand">${capitalize(p.brand)}</div>
                 <div class="card-title" onclick="openProductModal(${p.id})">${p.title}</div>
                 <div class="card-price-row">
-                    <span class="price-main">$${Math.floor(p.price)}</span>
-                    <span class="price-sub">.${(p.price % 1).toFixed(2).substring(2)}</span>
+                    <span class="price-main">$${p.price.toFixed(2)}</span>
                     <span class="price-unit">per each</span>
                 </div>
                 <div class="card-rating">
@@ -149,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <button class="btn btn--accent add-to-cart-btn" data-id="${p.id}">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-                    Buy now
+                    <span>Buy now</span>
                 </button>
             </div>
         `).join('');
@@ -157,8 +163,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // Re-attach add to cart listeners
         document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const id = parseInt(e.currentTarget.getAttribute('data-id'));
-                addToCart(id);
+                const btnEl = e.currentTarget;
+                const id = parseInt(btnEl.getAttribute('data-id'));
+                
+                // Button Animation
+                const span = btnEl.querySelector('span');
+                const originalText = span.textContent;
+                btnEl.classList.add('added');
+                span.textContent = 'Added ✓';
+                
+                setTimeout(() => {
+                    addToCart(id);
+                    btnEl.classList.remove('added');
+                    span.textContent = originalText;
+                }, 800);
+                
                 e.stopPropagation();
             });
         });
@@ -166,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── NAV LOGIC ──
     function initNav() {
-        document.querySelectorAll('.nav-links a, .mobile-nav-links a').forEach(link => {
+        document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', (e) => {
                 const category = e.target.getAttribute('data-category');
                 if (category) {
@@ -174,31 +193,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.querySelectorAll('.nav-links a').forEach(a => a.style.color = 'var(--silver-400)');
                     e.target.style.color = 'var(--white)';
                     renderProducts();
-                    closeMobileNavUI();
+                    
+                    // Smooth scroll to store
+                    const storeSection = document.getElementById('store');
+                    if(storeSection) {
+                        storeSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+                    }
                 }
             });
         });
 
-        // Initialize proper first nav link
         const firstLink = document.querySelector('.nav-links a[data-category="tires"]');
         if (firstLink) firstLink.style.color = 'var(--white)';
         
-        // Hamburger toggle
-        const hamburger = document.querySelector('.hamburger-menu');
-        if (hamburger) {
-            hamburger.addEventListener('click', () => {
-                mobileNavDrawer.classList.add('active');
-                mobileNavOverlay.classList.add('active');
-            });
-        }
-
-        document.getElementById('closeMobileNav').addEventListener('click', closeMobileNavUI);
-        mobileNavOverlay.addEventListener('click', closeMobileNavUI);
-    }
-
-    function closeMobileNavUI() {
-        mobileNavDrawer.classList.remove('active');
-        mobileNavOverlay.classList.remove('active');
+        // Prevent default hash jumps on footer links
+        document.querySelectorAll('.footer-col a').forEach(a => {
+            a.addEventListener('click', (e) => { e.preventDefault(); });
+        });
     }
 
     // ── SEARCH LOGIC ──
@@ -206,6 +217,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.querySelector('.nav-search input');
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
+                state.searchQuery = e.target.value;
+                renderProducts();
+            });
+        }
+
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+        const mobileSearchBar = document.getElementById('mobileSearchBar');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        if(mobileSearchBtn && mobileSearchBar) {
+            mobileSearchBtn.addEventListener('click', () => {
+                mobileSearchBar.classList.toggle('active');
+                if (mobileSearchBar.classList.contains('active')) mobileSearchInput.focus();
+            });
+            mobileSearchInput.addEventListener('input', (e) => {
                 state.searchQuery = e.target.value;
                 renderProducts();
             });
@@ -223,28 +248,56 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ── FILTER LOGIC (Data driven instead of static) ──
+    // ── FILTER LOGIC ──
     function initFilters() {
+        // Collapsible headers
+        document.querySelectorAll('.filter-header').forEach(header => {
+            header.addEventListener('click', (e) => {
+                const group = e.currentTarget.closest('.filter-group');
+                group.classList.toggle('collapsed');
+            });
+        });
+
+        // Checkboxes
         const filterCheckboxes = document.querySelectorAll('.sidebar input[type="checkbox"]');
         filterCheckboxes.forEach(cb => {
             cb.addEventListener('change', (e) => {
                 const group = e.target.closest('.filter-group').getAttribute('data-filter-group');
                 const val = e.target.value;
-                
-                if (e.target.checked) {
-                    state.filters[group].push(val);
-                } else {
-                    state.filters[group] = state.filters[group].filter(v => v !== val);
-                }
+                if (e.target.checked) state.filters[group].push(val);
+                else state.filters[group] = state.filters[group].filter(v => v !== val);
                 updateActiveFilterTags();
                 renderProducts();
             });
-            // Initial read
             if (cb.checked) {
                 const group = cb.closest('.filter-group').getAttribute('data-filter-group');
                 state.filters[group].push(cb.value);
             }
         });
+
+        // Size Matcher
+        ['sizeWidth', 'sizeRatio', 'sizeRim'].forEach(id => {
+            const select = document.getElementById(id);
+            if(select) {
+                select.addEventListener('change', (e) => {
+                    const type = id.replace('size', '').toLowerCase();
+                    state.sizeFilter[type] = e.target.value === '' ? '' : e.target.value;
+                    renderProducts();
+                });
+            }
+        });
+
+        // Price Filter
+        const priceRange = document.getElementById('priceRange');
+        const priceLabel = document.getElementById('priceLabel');
+        if(priceRange && priceLabel) {
+            priceRange.addEventListener('input', (e) => {
+                state.maxPrice = parseInt(e.target.value);
+                priceLabel.textContent = '$' + state.maxPrice;
+                renderProducts();
+            });
+        }
+
         updateActiveFilterTags();
     }
 
@@ -255,12 +308,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let html = '';
         Object.keys(state.filters).forEach(groupKey => {
             if (state.filters[groupKey].length > 0) {
-                const groupName = groupKey === 'vehicleType' ? 'Vehicle Type' : groupKey.charAt(0).toUpperCase() + groupKey.slice(1);
+                const groupName = groupKey === 'vehicleType' ? 'Vehicle Type' : capitalize(groupKey);
                 html += `<div class="filter-category">
                     <span class="cat-name">${groupName} (${state.filters[groupKey].length}):</span>
                     ${state.filters[groupKey].map(val => `
                         <span class="active-tag" data-group="${groupKey}" data-val="${val}">
-                            ${val} <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            ${capitalize(val)} <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                         </span>
                     `).join('')}
                 </div>`;
@@ -268,21 +321,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         activeFiltersRow.innerHTML = html;
-        if(html === '') {
-            activeFiltersRow.style.display = 'none';
-        } else {
-            activeFiltersRow.style.display = 'flex';
-        }
+        activeFiltersRow.style.display = html === '' ? 'none' : 'flex';
 
-        // Attach removal listeners
         activeFiltersRow.querySelectorAll('.active-tag').forEach(tag => {
             tag.addEventListener('click', (e) => {
                 const group = e.currentTarget.getAttribute('data-group');
                 const val = e.currentTarget.getAttribute('data-val');
-                // Uncheck checkbox
                 const cb = document.querySelector(`.sidebar .filter-group[data-filter-group="${group}"] input[value="${val}"]`);
                 if(cb) cb.checked = false;
-                // Update state
                 state.filters[group] = state.filters[group].filter(v => v !== val);
                 updateActiveFilterTags();
                 renderProducts();
@@ -313,7 +359,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         saveCart();
         updateCartCount();
-        openCart(); // Show cart when item added
+        
+        // Cart Icon Bounce Animation
+        document.querySelectorAll('.nav-cart, .mobile-cart').forEach(cart => {
+            cart.classList.add('bounce');
+            setTimeout(() => cart.classList.remove('bounce'), 300);
+        });
+
+        openCart();
     }
 
     function removeFromCart(productId) {
@@ -344,8 +397,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCartCount() {
         const count = state.cart.reduce((acc, item) => acc + item.quantity, 0);
         cartCountSpans.forEach(span => {
-            span.textContent = `Your cart (${count})`;
             if(span.closest('.mobile-cart')) span.textContent = count; 
+            else span.textContent = `Your cart (${count})`;
         });
     }
 
@@ -390,7 +443,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cartTotal.textContent = `$${total.toFixed(2)}`;
     }
 
-    // Expose for inline HTML handlers in strings
     window.updateCartQuantity = updateQuantity;
 
     // ── PRODUCT DETAIL MODAL ──
@@ -404,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${product.image}" alt="${product.title}">
                 </div>
                 <div class="modal-info">
-                    <div class="modal-brand">${product.brand}</div>
+                    <div class="modal-brand">${capitalize(product.brand)}</div>
                     <h2 class="modal-title">${product.title}</h2>
                     <div class="card-rating" style="margin-bottom: 20px;">
                         <span class="stars">${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}</span>
@@ -415,12 +467,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="modal-desc">${product.description}</p>
                     
                     <div class="specs-table">
-                        <div class="spec-row"><span>Category:</span><span>${product.category}</span></div>
-                        <div class="spec-row"><span>Season:</span><span>${product.season}</span></div>
-                        <div class="spec-row"><span>Vehicle Type:</span><span>${product.vehicleType}</span></div>
+                        <div class="spec-row"><span>Category:</span><span>${capitalize(product.category)}</span></div>
+                        <div class="spec-row"><span>Season:</span><span>${capitalize(product.season)}</span></div>
+                        <div class="spec-row"><span>Vehicle Type:</span><span>${capitalize(product.vehicleType)}</span></div>
                         <div class="spec-row"><span>Size:</span><span>${product.size}</span></div>
                         <div class="spec-row"><span>Production Year:</span><span>${product.year}</span></div>
                     </div>
+
+                    ${product.category === 'tires' ? `
+                    <div class="tire-diagram">
+                        <svg viewBox="0 0 100 100" width="40" height="40" stroke="currentColor" fill="none" stroke-width="2">
+                           <circle cx="50" cy="50" r="40"/>
+                           <circle cx="50" cy="50" r="20"/>
+                           <path d="M 10 50 L 30 50 M 70 50 L 90 50"/>
+                        </svg>
+                        <span>Size Decode: ${product.size} indicates Width/Ratio and Rim Diameter (R).</span>
+                    </div>` : ''}
 
                     <div class="modal-actions">
                         <div class="qty-selector">
@@ -453,6 +515,9 @@ document.addEventListener('DOMContentLoaded', () => {
         productModal.classList.remove('active');
         productModalOverlay.classList.remove('active');
     }
+
+    document.getElementById('closeProductModal').addEventListener('click', closeProductDetailsModal);
+    productModalOverlay.addEventListener('click', closeProductDetailsModal);
 
     // ── DEMO CHECKOUT ──
     window.processDemoCheckout = function() {
