@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span>Subtotal</span>
                     <span id="cartTotal">$0.00</span>
                 </div>
-                <button class="btn btn--primary" style="width: 100%;" onclick="alert('Proceeding to secure checkout!')">Checkout Now</button>
+                <button class="btn btn--primary" style="width: 100%;" onclick="processDemoCheckout()">Checkout Now</button>
             </div>
         </div>
 
@@ -454,7 +454,32 @@ document.addEventListener('DOMContentLoaded', () => {
         productModalOverlay.classList.remove('active');
     }
 
-    document.getElementById('closeProductModal').addEventListener('click', closeProductDetailsModal);
-    productModalOverlay.addEventListener('click', closeProductDetailsModal);
+    // ── DEMO CHECKOUT ──
+    window.processDemoCheckout = function() {
+        if(state.cart.length === 0) return;
+        const btn = document.querySelector('.cart-footer .btn--primary');
+        const originalText = btn.textContent;
+        btn.textContent = 'Processing Securely...';
+        btn.style.opacity = '0.7';
+        
+        setTimeout(() => {
+            state.cart = [];
+            saveCart();
+            updateCartCount();
+            renderCartItems();
+            btn.textContent = 'Order Confirmed - Thank You!';
+            btn.style.backgroundColor = 'var(--accent-green)';
+            btn.style.color = 'white';
+            
+            setTimeout(() => {
+                closeCart();
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.backgroundColor = '';
+                    btn.style.opacity = '1';
+                }, 500);
+            }, 2000);
+        }, 1500);
+    };
 
 }); // End DOMContentLoaded
