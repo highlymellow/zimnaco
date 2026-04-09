@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /Users/mb/Desktop/Zimnaco/*.html)",
+      "Bash(wc -c /Users/mb/Desktop/Zimnaco/*.html)"
+    ]
+  }
+}
