@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zimnaco Corporation | Auto Forge</title>
+<title>Zimnaco Corporation | Tires & Accessories</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+<link href="app.css" rel="stylesheet">
 <style>
   :root {
     /* ── ZIMNACO BRAND COLORS ── */
@@ -57,474 +58,143 @@
     overflow-x: hidden;
   }
 
-  /* ── PRELOADER (MP4 Style Animation) ── */
+  /* ── PRELOADER ── */
   .preloader {
-    position: fixed;
-    inset: 0;
-    background: var(--black);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: fixed; inset: 0; background: var(--black); z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
     transition: opacity 0.6s ease, visibility 0.6s ease;
   }
-  .preloader.hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-  .logo-pulse {
-    width: 220px;
-    animation: pulse 1.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-  }
+  .preloader.hidden { opacity: 0; visibility: hidden; }
+  .logo-pulse { width: 220px; animation: pulse 1.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1); }
   @keyframes pulse {
     0% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(59,99,196,0.2)); }
     100% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 35px rgba(59,99,196,0.7)); }
   }
 
   /* ── NAVBAR ── */
-  .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(16px);
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    transition: all 0.3s;
-  }
-  .nav-container {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 16px 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .nav-logo {
-    height: 48px;
-    transition: transform 0.3s ease;
-  }
-  .nav-logo:hover {
-    transform: scale(1.05);
-  }
-  .nav-links {
-    display: flex;
-    gap: 36px;
-  }
-  .nav-links a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--navy-300); }
+  .navbar { position: fixed; top: 0; width: 100%; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(16px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.3s; }
+  .nav-container { max-width: 1500px; margin: 0 auto; padding: 16px 5%; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { height: 48px; object-fit: contain; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { color: var(--silver-400); text-decoration: none; font-weight: 500; font-size: 15px; letter-spacing: 0.5px; transition: color 0.3s; cursor: pointer;}
+  .nav-links a:hover { color: var(--white); }
   
-  .nav-search {
-    display: flex;
-    align-items: center;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 20px;
-    padding: 8px 16px;
-    width: 280px;
-    transition: border-color 0.3s;
-  }
-  .nav-search:focus-within {
-    border-color: var(--navy-400);
-  }
-  .nav-search input {
-    background: none;
-    border: none;
-    color: var(--white);
-    outline: none;
-    width: 100%;
-    font-family: var(--font-body);
-    font-size: 13px;
-  }
-  .nav-search input::placeholder { color: var(--silver-500); }
-  .nav-search svg { stroke: var(--silver-400); width: 16px; height: 16px; margin-left: 8px; }
+  .nav-actions { display: flex; gap: 20px; align-items: center; }
+  .nav-search { position: relative; width: 240px; }
+  .nav-search input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 10px 16px 10px 40px; color: var(--white); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color 0.3s, background 0.3s; }
+  .nav-search input::placeholder { color: var(--silver-600); }
+  .nav-search input:focus { background: rgba(255,255,255,0.1); border-color: var(--navy-400); }
+  .nav-search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; stroke: var(--silver-500); stroke-width: 2; pointer-events: none; }
   
-  .nav-cart {
-    color: var(--white);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--navy-700);
-    padding: 10px 20px;
-    border-radius: 20px;
-    transition: background 0.3s;
-  }
-  .nav-cart:hover {
-    background: var(--navy-500);
-  }
+  .nav-cart { display: flex; align-items: center; gap: 8px; background: var(--navy-700); padding: 10px 20px; border-radius: 20px; transition: background 0.3s; color: white; cursor: pointer; }
+  .nav-cart:hover { background: var(--navy-500); }
 
-  /* ── HERO (Dark Cinematic Video Style) ── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 100px 5% 0;
-    position: relative;
-    overflow: hidden;
-    background: #000;
-  }
-  .hero-video-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    opacity: 0.8;
-  }
+  /* ── HERO ── */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 0; position: relative; overflow: hidden; background: #000; }
+  .hero-video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.8; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.7) 40%, rgba(5,5,5,0.2) 100%); z-index: 1; }
   
-  /* Safari specific pseudo-element masking. Hides the big white play button that naturally appears when video ends. */
-  .hero-video-bg::-webkit-media-controls,
-  .hero-video-bg::-webkit-media-controls-panel,
-  .hero-video-bg::-webkit-media-controls-play-button,
-  .hero-video-bg::-webkit-media-controls-start-playback-button,
-  .hero-video-bg::-webkit-media-controls-overlay-play-button {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    -webkit-appearance: none !important;
-  }
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 60% 50%, rgba(17, 27, 94, 0.4) 0%, rgba(5, 5, 5, 0.95) 100%);
-    z-index: 1;
-    pointer-events: none;
-  }
-  .hero-content {
-    max-width: 600px;
-    z-index: 2;
-    margin-left: max(0px, calc((100vw - 1500px) / 2));
-    position: relative;
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(48px, 5.5vw, 84px);
-    color: var(--white);
-    line-height: 1.1;
-    margin-bottom: 24px;
-  }
-  .hero h1 span { color: var(--navy-300); font-style: italic; }
-  .hero p {
-    font-size: 18px;
-    color: var(--navy-200);
-    line-height: 1.6;
-    margin-bottom: 40px;
-    max-width: 500px;
-  }
-  .hero-image {
-    position: absolute;
-    right: -2%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 55%;
-    z-index: 2; /* Sits above video overlay */
-  }
-  .hero-image img {
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(-20px 20px 60px rgba(0,0,0,0.9));
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border: none;
-    border-radius: 8px;
-    padding: 16px 36px;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .btn--primary {
-    background-color: var(--white);
-    color: var(--navy-900);
-  }
-  .btn--primary:hover {
-    background-color: var(--navy-100);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(255,255,255,0.1);
-  }
+  .hero-content { position: relative; z-index: 2; max-width: 600px; color: var(--white); }
+  .hero-content h1 { font-family: var(--font-display); font-size: clamp(48px, 6vw, 84px); line-height: 1.1; margin-bottom: 24px; font-weight: 600; letter-spacing: -1px; }
+  .hero-content h1 span { color: var(--navy-300); font-style: italic; font-weight: 400; }
+  .hero-content p { font-size: 18px; color: var(--silver-300); line-height: 1.6; margin-bottom: 40px; font-weight: 400; }
+  
+  /* ── BUTTONS ── */
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; font-size: 15px; font-weight: 600; border-radius: 30px; text-decoration: none; transition: all 0.3s ease; border: none; cursor: pointer; letter-spacing: 0.5px; }
+  .btn--primary { background-color: var(--white); color: var(--black); }
+  .btn--primary:hover { background-color: var(--silver-200); transform: translateY(-2px); }
+  .btn--secondary { background-color: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--white); }
+  .btn--secondary:hover { background-color: rgba(255,255,255,0.05); }
 
-  /* ── STORE SECTION (Clear WebP Product Layout) ── */
-  .store-section {
-    background-color: var(--off-white);
-    position: relative;
-    z-index: 10;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    margin-top: -80px; /* Overlaps the dark hero to smoothly bridge styles */
-    box-shadow: 0 -20px 50px rgba(0,0,0,0.5);
-  }
-  .store-container {
-    display: flex;
-    gap: 60px;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 100px 5%;
-  }
-
-  /* Sidebar Filters */
-  .sidebar { width: 260px; flex-shrink: 0; }
+  /* ── STORE SECTION ── */
+  .store-section { background-color: var(--white); padding: 100px 5% 120px; position:relative; z-index: 3; margin-top: -80px; border-radius: 40px 40px 0 0; }
+  .store-container { max-width: 1500px; margin: 0 auto; display: flex; gap: 60px; }
+  
+  .sidebar { width: 280px; flex-shrink: 0; }
   .filter-group { margin-bottom: 40px; }
-  .filter-header {
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--black);
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .filter-header svg { width: 16px; height: 16px; stroke: var(--silver-500); stroke-width: 2; fill: none; }
+  .filter-header { font-family: var(--font-display); font-size: 20px; font-weight: 600; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--off-white); display: flex; justify-content: space-between; align-items: center; cursor: pointer;}
+  .filter-header svg { width: 16px; height: 16px; stroke: var(--black); stroke-width: 2; fill: none; transition: transform 0.3s; }
   
-  .checkbox-label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 14px;
-    cursor: pointer;
-    font-size: 14px;
-    color: var(--silver-700);
-    font-weight: 500;
-  }
-  .checkbox-label input { display: none; }
-  .custom-checkbox {
-    width: 18px;
-    height: 18px;
-    border: 1.5px solid var(--silver-300);
-    border-radius: 4px;
-    margin-right: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    background: var(--white);
-  }
-  .checkbox-label input:checked + .custom-checkbox { border-color: var(--accent-red); background: var(--accent-red); }
-  .checkbox-label input:checked + .custom-checkbox::after {
-    content: '';
-    width: 4px; height: 8px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-    margin-bottom: 2px;
-  }
-  .checkbox-count { margin-left: auto; color: var(--silver-400); font-size: 12px; }
-  .filter-icon { margin-right: 8px; font-size: 14px; }
+  .checkbox-label { display: flex; align-items: center; position: relative; padding-left: 32px; margin-bottom: 16px; cursor: pointer; font-size: 15px; color: var(--silver-800); user-select: none; transition: color 0.2s; }
+  .checkbox-label:hover { color: var(--black); }
+  .checkbox-label input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+  .custom-checkbox { position: absolute; top: 50%; left: 0; transform: translateY(-50%); height: 20px; width: 20px; background-color: #fff; border: 1px solid var(--silver-300); border-radius: 4px; transition: all 0.2s; }
+  .checkbox-label:hover input ~ .custom-checkbox { border-color: var(--navy-500); }
+  .checkbox-label input:checked ~ .custom-checkbox { background-color: var(--navy-500); border-color: var(--navy-500); }
+  .custom-checkbox:after { content: ""; position: absolute; display: none; left: 6px; top: 2px; width: 5px; height: 10px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .checkbox-label input:checked ~ .custom-checkbox:after { display: block; }
+  .checkbox-text { font-weight: 500; }
+  
+  .store-main { flex-grow: 1; }
+  .store-header { margin-bottom: 40px; }
+  .store-header h2 { font-family: var(--font-display); font-size: 40px; font-weight: 400; margin-bottom: 12px; }
+  .store-header h2 strong { font-weight: 600; color: var(--navy-800); }
+  .store-header p { color: var(--silver-600); font-size: 16px; }
 
-  /* Store Main */
-  .store-main { flex: 1; }
-  .store-header h2 {
-    font-family: var(--font-display);
-    font-size: 44px;
-    font-weight: 500;
-    color: var(--black);
-    margin-bottom: 8px;
-  }
-  .store-header h2 strong { font-weight: 700; }
-  .store-header p {
-    color: var(--silver-600);
-    margin-bottom: 40px;
-    font-size: 16px;
-  }
+  .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .results-title { font-weight: 600; color: var(--silver-700); text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
   
-  .results-header { margin-bottom: 16px; }
-  .results-title { font-weight: 700; font-size: 18px; color: var(--black); }
-  
-  .active-filters-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    margin-bottom: 40px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--silver-200);
-  }
-  .filter-category { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .cat-name { font-size: 12px; color: var(--silver-600); font-weight: 600; }
-  .active-tag {
-    background: var(--white);
-    border: 1px solid var(--silver-200);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    color: var(--silver-700);
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .active-tag:hover { background: var(--silver-50); border-color: var(--navy-300); color: var(--navy-900); }
-  .active-tag svg { width: 14px; height: 14px; stroke: var(--silver-500); stroke-width: 2; }
+  .active-filters-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; align-items: center; }
+  .filter-category { display: flex; gap: 8px; align-items: center; padding: 4px 0; }
+  .cat-name { font-size: 13px; color: var(--silver-600); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+  .active-tag { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--off-white); border: 1px solid var(--silver-200); border-radius: 20px; font-size: 13px; font-weight: 500; color: var(--black); cursor: pointer; transition: all 0.2s; }
+  .active-tag:hover { background: #fee2e2; border-color: #fca5a5; color: var(--accent-red); }
+  .active-tag svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; pointer-events: none; }
 
-  /* Product Grid */
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-  }
-  .product-card {
-    background: var(--white);
-    border: 1px solid var(--silver-200);
-    border-radius: 16px;
-    padding: 24px;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
-    display: flex;
-    flex-direction: column;
-  }
-  .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(10,18,68,0.06);
-    border-color: var(--navy-200);
-  }
-  .card-image-wrap {
-    position: relative;
-    height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-  }
-  .card-badge {
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    z-index: 2;
-  }
-  .card-badge.winter { background: var(--navy-50); color: var(--navy-600); }
-  .card-badge.summer { background: #FFFBEB; color: #D97706; }
-  .card-badge.all { background: #F0FDF4; color: var(--accent-green); }
+  /* ── GRID ── */
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px; }
+  
+  .product-card { position: relative; display: flex; flex-direction: column; transition: transform 0.3s ease; }
+  .product-card:hover { transform: translateY(-8px); }
+  
+  .card-image-wrap { position: relative; background: var(--off-white); border-radius: 12px; padding: 40px; margin-bottom: 20px; height: 280px; display: flex; align-items: center; justify-content: center; cursor: pointer;}
+  .card-image-wrap img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); mix-blend-mode: multiply; }
+  .product-card:hover .card-image-wrap img { transform: scale(1.05) rotate(2deg); }
+  
+  .card-badge { position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; background: var(--white); color: var(--black); display: flex; align-items: center; gap: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  .card-badge.summer { color: var(--accent-amber); }
+  .card-badge.winter { color: var(--navy-500); }
+  
+  .card-brand { color: var(--silver-500); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .card-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; margin-bottom: 16px; color: var(--black); line-height: 1.2; cursor: pointer; }
+  
+  .card-price-row { display: flex; align-items: baseline; margin-bottom: 12px; }
+  .price-main { font-size: 28px; font-weight: 700; color: var(--navy-900); }
+  .price-sub { font-size: 16px; font-weight: 600; color: var(--navy-900); margin-top: -8px;}
+  .price-unit { margin-left: 8px; font-size: 13px; color: var(--silver-500); }
+  
+  .card-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px; }
+  .stars { color: var(--accent-amber); letter-spacing: 2px; }
+  .opinions { color: var(--silver-500); }
 
-  .card-image-wrap img {
-    max-height: 95%;
-    max-width: 95%;
-    object-fit: contain;
-    mix-blend-mode: multiply;
-    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));
-    transition: transform 0.5s ease;
-  }
-  .product-card:hover .card-image-wrap img { transform: scale(1.06) rotate(2deg); }
-
-  .card-brand { font-weight: 700; font-size: 18px; color: var(--black); margin-bottom: 4px; }
-  .card-title { font-size: 14px; color: var(--silver-600); margin-bottom: 20px; flex-grow: 1; min-height: 42px;}
-  
-  .card-price-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 12px; }
-  .price-main { font-size: 26px; font-weight: 700; color: var(--black); }
-  .price-sub { font-size: 14px; font-weight: 700; color: var(--black); }
-  .price-unit { font-size: 12px; color: var(--silver-500); margin-left: 4px; }
-  
-  .card-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
-  .stars { color: var(--accent-amber); font-size: 13px; letter-spacing: 2px; }
-  .opinions { font-size: 12px; color: var(--silver-500); font-weight: 500;}
-  
-  .btn--accent {
-    background-color: var(--accent-red);
-    color: var(--white);
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.3s;
-  }
-  .btn--accent:hover { background-color: #B91C1C; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(220,38,38,0.2); }
+  .btn--accent { background-color: var(--black); color: var(--white); width: 100%; border-radius: 8px; padding: 14px 24px; gap: 8px; transition: background 0.3s; }
+  .btn--accent:hover { background-color: var(--navy-700); }
 
   /* ── FOOTER ── */
-  .footer {
-    background: var(--navy-900);
-    color: var(--white);
-    padding: 80px 5% 40px;
-  }
-  .footer-container { max-width: 1500px; margin: 0 auto; }
-  .footer-top h2 { font-family: var(--font-display); font-size: 40px; margin-bottom: 60px; font-weight: 500; }
-  .footer-top h2 strong { font-weight: 700; }
+  .footer { background: var(--black); color: var(--white); padding: 80px 5% 40px; margin-top: auto; }
+  .footer-container { max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 80px; }
   
-  .footer-links {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 80px;
-  }
+  .footer-brand p { color: var(--silver-400); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
   .footer-logo { height: 60px; margin-bottom: 24px; }
-  .footer-desc { color: var(--navy-200); font-size: 14px; line-height: 1.7; max-width: 340px; }
+  .contact-info { color: var(--silver-400); font-size: 14px; line-height: 1.8; }
   
-  .footer-col h4 { font-size: 13px; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1.5px; }
-  .footer-col a {
-    display: block;
-    color: var(--navy-200);
-    text-decoration: none;
-    font-size: 13px;
-    margin-bottom: 14px;
-    transition: color 0.2s;
-  }
+  .footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .footer-col h4 { font-family: var(--font-display); font-size: 20px; font-weight: 500; margin-bottom: 24px; color: var(--white); }
+  .footer-col a { display: block; color: var(--silver-400); text-decoration: none; margin-bottom: 16px; font-size: 15px; transition: color 0.3s; }
   .footer-col a:hover { color: var(--white); }
   
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding-top: 24px;
-    font-size: 12px;
-    color: var(--silver-500);
-  }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: 60px; display: flex; justify-content: space-between; font-size: 13px; color: var(--silver-600); }
 
-  /* ── ANIMATIONS ── */
-  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-right { opacity: 0; transform: translateX(50px) translateY(-50%); transition: opacity 1s ease, transform 1s ease; }
-  .reveal-right.visible { opacity: 1; transform: translateX(0) translateY(-50%); }
-
-  /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
     .store-container { flex-direction: column; }
     .sidebar { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .hero { flex-direction: column; padding-top: 140px; text-align: center; }
     .hero-content { margin: 0 auto; }
-    .hero-image { position: relative; width: 100%; transform: none; right: 0; top: 0; margin-top: 40px; }
-    .reveal-right { transform: translateY(50px); }
-    .reveal-right.visible { transform: translateY(0); }
-    .footer-links { grid-template-columns: 1fr 1fr; }
+    .footer-container { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
     .sidebar { grid-template-columns: 1fr; }
-    .nav-links, .nav-search { display: none; }
+    .nav-links, .nav-cart, .nav-search { display: none; }
     .footer-links { grid-template-columns: 1fr; }
   }
 </style>
@@ -537,21 +207,30 @@
 
   <nav class="navbar">
     <div class="nav-container">
+      <button class="hamburger-menu" id="hamburgerMenu">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
       <a href="#home" title="Zimnaco Home">
         <img src="logo.png" alt="Zimnaco" class="nav-logo">
       </a>
       <div class="nav-links">
-        <a href="#store">Tires</a>
-        <a href="#rims">Rims</a>
-        <a href="#accessories">Accessories</a>
+        <a data-category="tires">Tires</a>
+        <a data-category="rims">Rims</a>
+        <a data-category="accessories">Accessories</a>
       </div>
-      <div class="nav-search">
-        <input type="text" placeholder="What are you looking for?">
-        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </div>
-      <div class="nav-cart" onclick="alert('Cart demo loaded')">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-        <span>Your cart (2)</span>
+      <div class="nav-actions">
+        <div class="nav-search">
+          <input type="text" placeholder="Search by brand or series...">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="mobile-cart" id="mobileCartBtn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
+          <span>0</span>
+        </div>
+        <div class="nav-cart" id="desktopCartBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
+          <span>Your cart (0)</span>
+        </div>
       </div>
     </div>
   </nav>
@@ -570,440 +249,202 @@
     </div>
   </header>
 
+  <div class="trust-layer reveal">
+    <div class="trust-badge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 100% Secure Checkout</div>
+    <div class="trust-badge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Privacy Protected</div>
+    <div class="trust-badge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30-Day Guarantee</div>
+    <div class="trust-badge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg> Free Returns</div>
+  </div>
+
   <section class="store-section" id="store">
     <div class="store-container">
       
       <aside class="sidebar reveal">
-        <div class="filter-group">
+        <div class="filter-group" data-filter-group="year">
           <div class="filter-header">
             Date of production
             <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
           </div>
           <label class="checkbox-label">
-            <input type="checkbox" checked>
+            <input type="checkbox" value="2026">
             <div class="custom-checkbox"></div>
             <span class="checkbox-text">2026</span>
-            <span class="checkbox-count">61</span>
           </label>
           <label class="checkbox-label">
-            <input type="checkbox">
+            <input type="checkbox" value="2025">
             <div class="custom-checkbox"></div>
             <span class="checkbox-text">2025</span>
-            <span class="checkbox-count">22</span>
           </label>
           <label class="checkbox-label">
-            <input type="checkbox" checked>
+            <input type="checkbox" value="2024">
             <div class="custom-checkbox"></div>
             <span class="checkbox-text">2024</span>
-            <span class="checkbox-count">31</span>
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" checked>
-            <div class="custom-checkbox"></div>
-            <span class="checkbox-text">2023</span>
-            <span class="checkbox-count">19</span>
           </label>
         </div>
 
-        <div class="filter-group">
+        <div class="filter-group" data-filter-group="season">
           <div class="filter-header">
             Season
             <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
           </div>
           <label class="checkbox-label">
-            <input type="checkbox" checked>
+            <input type="checkbox" value="All year">
             <div class="custom-checkbox"></div>
-            <span class="filter-icon">⛅</span>
             <span class="checkbox-text">All year</span>
-            <span class="checkbox-count">134</span>
           </label>
           <label class="checkbox-label">
-            <input type="checkbox">
+            <input type="checkbox" value="Summer">
             <div class="custom-checkbox"></div>
-            <span class="filter-icon">☀️</span>
             <span class="checkbox-text">Summer</span>
-            <span class="checkbox-count">89</span>
           </label>
           <label class="checkbox-label">
-            <input type="checkbox">
+            <input type="checkbox" value="Winter">
             <div class="custom-checkbox"></div>
-            <span class="filter-icon">❄️</span>
             <span class="checkbox-text">Winter</span>
-            <span class="checkbox-count">31</span>
           </label>
         </div>
 
-        <div class="filter-group">
+        <div class="filter-group" data-filter-group="vehicleType">
           <div class="filter-header">
             Type of vehicle
             <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
           </div>
           <label class="checkbox-label">
-            <input type="checkbox" checked>
+            <input type="checkbox" value="Standard car">
             <div class="custom-checkbox"></div>
             <span class="checkbox-text">Standard car</span>
-            <span class="checkbox-count">161</span>
           </label>
           <label class="checkbox-label">
-            <input type="checkbox">
+            <input type="checkbox" value="Performance">
             <div class="custom-checkbox"></div>
-            <span class="checkbox-text">Runflat</span>
-            <span class="checkbox-count">14</span>
+            <span class="checkbox-text">Performance</span>
           </label>
           <label class="checkbox-label">
-            <input type="checkbox">
+            <input type="checkbox" value="4x4">
             <div class="custom-checkbox"></div>
             <span class="checkbox-text">4x4</span>
-            <span class="checkbox-count">21</span>
           </label>
           <label class="checkbox-label">
-            <input type="checkbox">
+            <input type="checkbox" value="Deliver">
             <div class="custom-checkbox"></div>
-            <span class="checkbox-text">Deliver</span>
-            <span class="checkbox-count">14</span>
+            <span class="checkbox-text">Delivery / Van</span>
           </label>
         </div>
       </aside>
 
       <main class="store-main">
         <div class="store-header reveal">
-          <h2>Best possible choice <strong>for you</strong></h2>
-          <p>The pieces stand out for their contemporary straight lines and imposing presence.</p>
+          <h2>Precision inventory <strong>for your vehicle</strong></h2>
+          <p>Find exact manufacturer matches and ultra-high performance components tailored for safety and aesthetics.</p>
         </div>
 
-        <div class="results-header reveal">
-          <span class="results-title">results (141)</span>
+        <div class="size-selector-panel reveal">
+          <h3>Tire Size Matcher</h3>
+          <div class="size-grid">
+            <div class="size-col">
+              <label>Width</label>
+              <select><option>Select Width</option><option>185</option><option>195</option><option>205</option><option>225</option><option>235</option><option>245</option><option>265</option></select>
+            </div>
+            <div class="size-col">
+              <label>Aspect Ratio</label>
+              <select><option>Select Ratio</option><option>40</option><option>45</option><option>55</option><option>60</option><option>65</option><option>70</option></select>
+            </div>
+            <div class="size-col">
+              <label>Rim Diameter</label>
+              <select><option>Select Rim</option><option>R15</option><option>R16</option><option>R17</option><option>R18</option><option>R19</option></select>
+            </div>
+            <div class="size-col" style="padding-bottom: 5px;">
+              <button class="btn btn--primary" style="padding: 10px 24px; font-size: 13px;" onclick="alert('Demo: Searching matching specifications...')">Find Tires</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-row reveal">
+          <div class="results-header" style="margin:0;">
+            <span class="results-title">results (0)</span>
+          </div>
+          <div class="sort-control">
+            Sort By: 
+            <select id="sortSelect">
+              <option value="newest">Newest Arrivals</option>
+              <option value="price-asc">Price (Low to High)</option>
+              <option value="price-desc">Price (High to Low)</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
         </div>
         
         <div class="active-filters-row reveal">
-          <div class="filter-category">
-            <span class="cat-name">Date of production (3):</span>
-            <span class="active-tag">2026 <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-            <span class="active-tag">2024 <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-            <span class="active-tag">2023 <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-          </div>
-          <div class="filter-category">
-            <span class="cat-name">Season (2):</span>
-            <span class="active-tag">⛅ All year <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-            <span class="active-tag">☀️ Summer <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-          </div>
-          <div class="filter-category">
-            <span class="cat-name">Type of vehicle (2):</span>
-            <span class="active-tag">Standard car <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-            <span class="active-tag">Racing <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-          </div>
+          <!-- Filled densely by Javascript -->
         </div>
 
-        <div class="product-grid">
-          
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge winter">❄️ Winter</div>
-              <img src="https://images.unsplash.com/photo-1599406086771-47fb2bf12a7d?auto=format&fit=crop&q=80&w=400" alt="Yokohama" loading="lazy">
-            </div>
-            <div class="card-brand">Yokohama</div>
-            <div class="card-title">BluEarth Winter V906</div>
-            <div class="card-price-row">
-              <span class="price-main">138</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="opinions">322 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge summer">☀️ Summer</div>
-              <img src="https://images.unsplash.com/photo-1599406086771-47fb2bf12a7d?auto=format&fit=crop&q=80&w=400" alt="Continental" loading="lazy">
-            </div>
-            <div class="card-brand">Continental</div>
-            <div class="card-title">VanContact Eco</div>
-            <div class="card-price-row">
-              <span class="price-main">136</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="opinions">412 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge all">⛅ All year</div>
-              <img src="https://images.unsplash.com/photo-1599406086771-47fb2bf12a7d?auto=format&fit=crop&q=80&w=400" alt="Bridgestone" loading="lazy">
-            </div>
-            <div class="card-brand">Bridgestone</div>
-            <div class="card-title">Weather Control A005</div>
-            <div class="card-price-row">
-              <span class="price-main">140</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="opinions">632 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge all">⛅ All year</div>
-              <img src="https://images.unsplash.com/photo-1599406086771-47fb2bf12a7d?auto=format&fit=crop&q=80&w=400" alt="Michelin" loading="lazy">
-            </div>
-            <div class="card-brand">Michelin</div>
-            <div class="card-title">Agilis CrossClimate</div>
-            <div class="card-price-row">
-              <span class="price-main">128</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="opinions">567 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge summer">☀️ Summer</div>
-              <img src="https://images.unsplash.com/photo-1599406086771-47fb2bf12a7d?auto=format&fit=crop&q=80&w=400" alt="Michelin" loading="lazy">
-            </div>
-            <div class="card-brand">Michelin</div>
-            <div class="card-title">Pilot Sport 4 SUV</div>
-            <div class="card-price-row">
-              <span class="price-main">108</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★☆</span>
-              <span class="opinions">235 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge winter">❄️ Winter</div>
-              <img src="https://images.unsplash.com/photo-1599406086771-47fb2bf12a7d?auto=format&fit=crop&q=80&w=400" alt="Kleber" loading="lazy">
-            </div>
-            <div class="card-brand">Kleber</div>
-            <div class="card-title">Krisalp HP3</div>
-            <div class="card-price-row">
-              <span class="price-main">131</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="opinions">341 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
-          <!-- Extra Placeholders added -->
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge summer">☀️ Summer</div>
-              <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=400" alt="Pirelli" loading="lazy">
-            </div>
-            <div class="card-brand">Pirelli</div>
-            <div class="card-title">P Zero High Performance</div>
-            <div class="card-price-row">
-              <span class="price-main">205</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="opinions">812 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge all">⛅ All year</div>
-              <img src="https://images.unsplash.com/photo-1600706432502-77a0e2932287?auto=format&fit=crop&q=80&w=400" alt="Goodyear" loading="lazy">
-            </div>
-            <div class="card-brand">Goodyear</div>
-            <div class="card-title">Eagle F1 Asymmetric 5</div>
-            <div class="card-price-row">
-              <span class="price-main">185</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="opinions">590 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge winter">❄️ Winter</div>
-              <img src="https://images.unsplash.com/photo-1599406086771-47fb2bf12a7d?auto=format&fit=crop&q=80&w=400" alt="Dunlop" loading="lazy">
-            </div>
-            <div class="card-brand">Dunlop</div>
-            <div class="card-title">Winter Sport 5</div>
-            <div class="card-price-row">
-              <span class="price-main">152</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★☆</span>
-              <span class="opinions">145 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-          
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge all">⛅ All year</div>
-              <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=400" alt="Hankook" loading="lazy">
-            </div>
-            <div class="card-brand">Hankook</div>
-            <div class="card-title">Kinergy 4S2</div>
-            <div class="card-price-row">
-              <span class="price-main">118</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="opinions">319 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge summer">☀️ Summer</div>
-              <img src="https://images.unsplash.com/photo-1599406086771-47fb2bf12a7d?auto=format&fit=crop&q=80&w=400" alt="Falken" loading="lazy">
-            </div>
-            <div class="card-brand">Falken</div>
-            <div class="card-title">Azenis FK510</div>
-            <div class="card-price-row">
-              <span class="price-main">122</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★☆</span>
-              <span class="opinions">210 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
-          <div class="product-card reveal">
-            <div class="card-image-wrap">
-              <div class="card-badge winter">❄️ Winter</div>
-              <img src="https://images.unsplash.com/photo-1600706432502-77a0e2932287?auto=format&fit=crop&q=80&w=400" alt="Toyo" loading="lazy">
-            </div>
-            <div class="card-brand">Toyo</div>
-            <div class="card-title">Observe GSi-6</div>
-            <div class="card-price-row">
-              <span class="price-main">145</span><span class="price-sub">,99$</span><span class="price-unit">per each</span>
-            </div>
-            <div class="card-rating">
-              <span class="stars">★★★★★</span>
-              <span class="opinions">194 opinions</span>
-            </div>
-            <button class="btn btn--accent" onclick="alert('Added to cart')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
-              Buy now
-            </button>
-          </div>
-
+        <div class="product-grid" id="productGrid">
+            <!-- Products injected by app.js -->
         </div>
+
       </main>
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <div class="footer-container">
-      <div class="footer-top reveal">
-        <h2>With us <strong>on your journey</strong></h2>
-      </div>
-      <div class="footer-links reveal">
-        <div class="footer-col">
-          <img src="logo.png" alt="Zimnaco" class="footer-logo">
-          <p class="footer-desc">Precision engineering and uncompromising quality for drivers who demand absolute control. Built for the road.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Tirestore</h4>
-          <a href="#about">About us</a>
-          <a href="#contact">Contact</a>
-          <a href="#career">Career</a>
-          <a href="#investors">Investor relations</a>
-          <a href="#press">Press office</a>
-        </div>
-        <div class="footer-col">
-          <h4>For client</h4>
-          <a href="#help">Help Center</a>
-          <a href="#articles">Articles</a>
-          <a href="#promotions">Promotions</a>
-          <a href="#returns">Return and Exchange</a>
-          <a href="#payment">Payment methods</a>
-        </div>
-        <div class="footer-col">
-          <h4>Tires by type</h4>
-          <a href="#car-tires">Car tires</a>
-          <a href="#motorbike-tires">Motorbike tires</a>
-          <a href="#truck-tires">Truck tires</a>
-          <a href="#quad-tires">Quad tires</a>
-          <a href="#off-road">Off-road tires</a>
+      <div class="footer-brand">
+        <img src="logo.png" alt="Zimnaco" class="footer-logo">
+        <p>Your premier worldwide auto forge. Providing exact engineering standards for rubber, alloys, and automotive precision styling.</p>
+        <div class="contact-info">
+          <strong>Need Assistance?</strong><br>
+          📞 1-800-ZIMNACO<br>
+          ✉️ clientcare@zimnaco.com<br>
+          🏢 1900 Silicon Way, Detroit, MI 48201
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Zimnaco Corporation. All rights reserved.</span>
-        <a href="#privacy" style="color:var(--silver-500); text-decoration: none;">Privacy Policy</a>
+      
+      <div class="footer-links">
+        <div class="footer-col" id="about">
+          <h4>Zimnaco</h4>
+          <a href="#about">About Our Forge</a>
+          <a href="#about">Careers</a>
+          <a href="#about">Investors</a>
+          <a href="#about">Newsroom</a>
+        </div>
+        <div class="footer-col">
+          <h4>Client Services</h4>
+          <a href="#contact">Contact Support</a>
+          <a href="#contact">Shipping & Delivery</a>
+          <a href="#contact">Returns Center</a>
+          <a href="#contact">Track Order</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Warranty Info</a>
+        </div>
       </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Zimnaco Corporation. All rights reserved.</span>
+      <a href="#" style="color:var(--silver-500); text-decoration: none;">Privacy & Cookies</a>
     </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="products.js"></script>
+  <script src="app.js"></script>
   <script>
     // --- VIDEO: Boot independently, before anything else runs ---
-    // This must run before the preloader logic so Safari sees the video
-    // as active and visible from frame 1, avoiding its autoplay throttle.
     (function() {
       const heroVideo = document.getElementById('heroVideo');
       const heroCanvas = document.getElementById('heroCanvas');
       if (!heroVideo) return;
 
-      // Stamp all required Safari attributes directly via JS as a belt-and-suspenders guarantee
       heroVideo.muted = true;
       heroVideo.defaultMuted = true;
 
-      // Safari ignores the `autoplay` HTML attribute — explicit play() call is required.
-      // We attempt it immediately, then again on canplay in case the source isn't ready yet.
       function attemptPlay() {
         const p = heroVideo.play();
         if (p !== undefined) {
           p.catch(function() {
-            // Autoplay blocked (e.g. power-save mode); try again on next user interaction
             document.addEventListener('click', function retry() {
               heroVideo.play();
               document.removeEventListener('click', retry);
@@ -1014,7 +455,6 @@
       heroVideo.addEventListener('canplay', attemptPlay, { once: true });
       attemptPlay();
 
-      // Canvas swap: when video ends, freeze final frame on canvas so no play button appears
       let hasSwapped = false;
       function swapToCanvas() {
         if (hasSwapped || !heroCanvas) return;
@@ -1050,8 +490,8 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
@@ -1059,66 +499,6 @@
     document.querySelectorAll('.reveal, .reveal-right').forEach(el => {
       if (!el.closest('.hero')) observer.observe(el);
     });
-    // --- Product Filtering Logic ---
-    const searchInput = document.querySelector('.nav-search input');
-    const checkboxes = document.querySelectorAll('.sidebar input[type="checkbox"]');
-    const products = document.querySelectorAll('.product-card');
-    
-    // Assign hidden metadata to products for filtering based on existing labels
-    products.forEach((product, i) => {
-      const years = ['2026', '2024', '2023'];
-      const vtypes = ['Standard car', 'Runflat', '4x4', 'Deliver'];
-      product.setAttribute('data-year', years[i % years.length]);
-      product.setAttribute('data-vtype', vtypes[i % vtypes.length]);
-    });
-
-    function filterProducts() {
-      const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
-      
-      const activeFilters = Array.from(checkboxes)
-        .filter(cb => cb.checked)
-        .map(cb => cb.closest('.checkbox-label').querySelector('.checkbox-text').textContent.trim().toLowerCase());
-
-      let visibleCount = 0;
-      products.forEach(product => {
-        const brand = product.querySelector('.card-brand').textContent.toLowerCase();
-        const title = product.querySelector('.card-title').textContent.toLowerCase();
-        const badgeText = product.querySelector('.card-badge').textContent.toLowerCase();
-        const year = product.getAttribute('data-year').toLowerCase();
-        const vtype = product.getAttribute('data-vtype').toLowerCase();
-        
-        // Match Search
-        const matchesSearch = brand.includes(searchTerm) || title.includes(searchTerm);
-        
-        // Match Checkboxes (OR logic for the demo)
-        let matchesCheckbox = activeFilters.length === 0;
-        if (!matchesCheckbox) {
-          activeFilters.forEach(f => {
-            if (badgeText.includes(f) || year.includes(f) || vtype.includes(f)) {
-              matchesCheckbox = true;
-            }
-          });
-        }
-        
-        if (matchesSearch && matchesCheckbox) {
-          product.style.display = 'flex';
-          visibleCount++;
-        } else {
-          product.style.display = 'none';
-        }
-      });
-      
-      const resultsTitle = document.querySelector('.results-title');
-      if (resultsTitle) {
-        resultsTitle.textContent = `results (${visibleCount})`;
-      }
-    }
-
-    if (searchInput) searchInput.addEventListener('input', filterProducts);
-    checkboxes.forEach(cb => cb.addEventListener('change', filterProducts));
-    
-    // Run filter once to match initial state
-    filterProducts();
   </script>
 </body>
 </html>
