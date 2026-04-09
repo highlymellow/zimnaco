@@ -6,7 +6,10 @@
       "Bash(ffprobe -v quiet -print_format json -show_format -show_streams /Users/mb/Desktop/Zimnaco/Animated_Logo_Transition_for_Website_Hero.mp4)",
       "Bash(python3 -c ':*)",
       "Bash(python3)",
-      "Bash(ls -la /Users/mb/Desktop/Zimnaco/*.css)"
+      "Bash(ls -la /Users/mb/Desktop/Zimnaco/*.css)",
+      "Bash(node -e \"const products = require\\('./products.js'\\) || global.products; console.log\\('OK'\\)\")",
+      "Bash(node -c products.js)",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }

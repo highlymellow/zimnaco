@@ -1,4 +1,5 @@
 const products = [
+  // ─── TIRES ───
   {
     id: 1,
     category: 'tires',
@@ -11,7 +12,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '185/65 R15',
-    image: 'https://loremflickr.com/400/400/tire,car?lock=1',
+    image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=400',
     description: 'A summer tire perfectly adapted for light commercial vehicles and vans. Optimized rolling resistance for excellent fuel efficiency.'
   },
   {
@@ -26,7 +27,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '205/55 R16',
-    image: 'https://loremflickr.com/400/400/tire,car?lock=2',
+    image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=400',
     description: 'The all-season touring tire built to help you master your journey, no matter the season. Best-in-class wet grip.'
   },
   {
@@ -41,7 +42,7 @@ const products = [
     year: '2025',
     vehicleType: 'Delivery / Van',
     size: '195/70 R15',
-    image: 'https://loremflickr.com/400/400/tire,car?lock=3',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=400',
     description: 'Safety in all weather conditions, excellent mileage, and robustness. A highly durable commercial tire.'
   },
   {
@@ -56,7 +57,7 @@ const products = [
     year: '2024',
     vehicleType: '4x4',
     size: '225/60 R18',
-    image: 'https://loremflickr.com/400/400/tire,car?lock=4',
+    image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&q=80&w=400',
     description: 'Exceptional grip and safety: 1st in dry and wet braking. Specially designed for premium SUVs.'
   },
   {
@@ -71,7 +72,7 @@ const products = [
     year: '2026',
     vehicleType: 'Performance',
     size: '245/45 R19',
-    image: 'https://loremflickr.com/400/400/tire,car?lock=5',
+    image: 'https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?auto=format&fit=crop&q=80&w=400',
     description: 'The highest level of winter performance codeveloped with the best car makers. Unrivalled snow control.'
   },
   {
@@ -86,7 +87,7 @@ const products = [
     year: '2025',
     vehicleType: 'Standard car',
     size: '235/40 R18',
-    image: 'https://loremflickr.com/400/400/tire,car?lock=6',
+    image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=400',
     description: 'Luxurious comfort with superior wet braking. Refined styling for the true enthusiast.'
   },
   {
@@ -101,7 +102,7 @@ const products = [
     year: '2024',
     vehicleType: 'Performance',
     size: '225/45 R17',
-    image: 'https://loremflickr.com/400/400/tire,car?lock=7',
+    image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=400',
     description: 'Advanced 4D Nano Design tread compound. Maximized grip and wear performance for sports cars.'
   },
   {
@@ -116,7 +117,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '205/55 R16',
-    image: 'https://loremflickr.com/400/400/tire,car?lock=8',
+    image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&q=80&w=400',
     description: 'Perfect winter performance under any condition. Excellent snow traction and braking.'
   },
   {
@@ -131,7 +132,7 @@ const products = [
     year: '2025',
     vehicleType: 'Performance',
     size: '245/40 R18',
-    image: 'https://loremflickr.com/400/400/tire,car?lock=9',
+    image: 'https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&q=80&w=400',
     description: 'A champion in grip and steering precision. Designed to deliver an engaging driving experience.'
   },
   {
@@ -146,9 +147,11 @@ const products = [
     year: '2026',
     vehicleType: '4x4',
     size: '265/70 R17',
-    image: 'https://loremflickr.com/400/400/tire,car?lock=10',
+    image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=400',
     description: 'The ultimate all-terrain tire built to conquer any surface. Long-lasting treadwear.'
   },
+
+  // ─── RIMS ───
   {
     id: 11,
     category: 'rims',
@@ -161,7 +164,7 @@ const products = [
     year: '2026',
     vehicleType: 'Performance',
     size: '19x8.5 5x112 ET45',
-    image: 'https://loremflickr.com/400/400/alloy,wheel?lock=11',
+    image: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&q=80&w=400',
     description: 'Classic multi-spoke design reborn in a modern 2-piece forged configuration.'
   },
   {
@@ -176,9 +179,71 @@ const products = [
     year: '2026',
     vehicleType: 'Performance',
     size: '18x9.5 5x114.3 ET38',
-    image: 'https://loremflickr.com/400/400/alloy,wheel?lock=12',
-    description: 'Legendary lightweight racing wheel developed using Enkei’s MAT process.'
+    image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&q=80&w=400',
+    description: 'Legendary lightweight racing wheel developed using Enkei\u2019s MAT process.'
   },
+  {
+    id: 15,
+    category: 'rims',
+    brand: 'Vossen',
+    title: 'HF-5 Forged',
+    price: 899.99,
+    rating: 4.8,
+    reviews: 215,
+    season: 'N/A',
+    year: '2026',
+    vehicleType: 'Performance',
+    size: '20x10.5 5x120 ET35',
+    image: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&q=80&w=400',
+    description: 'Hybrid forged series featuring aggressively sculpted spokes and concave profiles.'
+  },
+  {
+    id: 16,
+    category: 'rims',
+    brand: 'Konig',
+    title: 'Hypergram',
+    price: 285.00,
+    rating: 4.6,
+    reviews: 310,
+    season: 'N/A',
+    year: '2026',
+    vehicleType: 'Standard car',
+    size: '17x9 5x100 ET40',
+    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=400',
+    description: 'Motorsport-inspired design featuring an exceptionally light and strong flow-formed barrel.'
+  },
+  {
+    id: 17,
+    category: 'rims',
+    brand: 'Rotiform',
+    title: 'LAS-R',
+    price: 320.00,
+    rating: 4.7,
+    reviews: 405,
+    season: 'N/A',
+    year: '2025',
+    vehicleType: 'Standard car',
+    size: '18x8.5 5x112 ET45',
+    image: 'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?auto=format&fit=crop&q=80&w=400',
+    description: 'Monoblock low pressure cast wheel with iconic aero styling and robust strength.'
+  },
+  {
+    id: 18,
+    category: 'rims',
+    brand: 'TSW',
+    title: 'Nurburgring',
+    price: 380.00,
+    rating: 4.5,
+    reviews: 198,
+    season: 'N/A',
+    year: '2024',
+    vehicleType: '4x4',
+    size: '18x9 6x139.7 ET0',
+    image: 'https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&q=80&w=400',
+    description: 'Precision engineered alloy wheel designed exclusively for heavy-duty truck platforms.'
+  },
+
+  // ─── ACCESSORIES ───
   {
     id: 13,
     category: 'accessories',
@@ -191,13 +256,13 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: 'Universal',
-    image: 'https://loremflickr.com/400/400/car,dashboard?lock=13',
+    image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=400',
     description: 'Accurately measure and maintain ideal tire pressure to enhance safety and fuel efficiency.'
   },
   {
     id: 14,
     category: 'accessories',
-    brand: 'Meguiar',
+    brand: 'Meguiar\'s',
     title: 'Ultimate Tire Shine',
     price: 15.99,
     rating: 4.8,
@@ -206,7 +271,67 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '15 oz',
-    image: 'https://loremflickr.com/400/400/cleaning,car?lock=14',
+    image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=400',
     description: 'Deep, dark, and glossy synthetic polymer formula provides a long-lasting wet look.'
+  },
+  {
+    id: 19,
+    category: 'accessories',
+    brand: 'Chemical Guys',
+    title: 'Wheel Cleaner Gel',
+    price: 19.99,
+    rating: 4.9,
+    reviews: 1450,
+    season: 'N/A',
+    year: '2026',
+    vehicleType: 'Standard car',
+    size: '16 oz',
+    image: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=80&w=400',
+    description: 'pH balanced, acid-free gel that breaks down stubborn brake dust and road grime.'
+  },
+  {
+    id: 20,
+    category: 'accessories',
+    brand: 'Slime',
+    title: 'Emergency Flat Tire Repair',
+    price: 34.50,
+    rating: 4.3,
+    reviews: 760,
+    season: 'N/A',
+    year: '2026',
+    vehicleType: 'Standard car',
+    size: 'Kit',
+    image: 'https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&q=80&w=400',
+    description: 'Instantly seal and inflate flat tires safely. Plugs directly into your 12V accessory port.'
+  },
+  {
+    id: 21,
+    category: 'accessories',
+    brand: 'NOCO',
+    title: 'Boost Plus Jump Starter',
+    price: 99.95,
+    rating: 5,
+    reviews: 8000,
+    season: 'N/A',
+    year: '2026',
+    vehicleType: 'Standard car',
+    size: '1000A',
+    image: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=400',
+    description: 'Ultra-safe lithium jump starter box for up to 6-liter gas and 3-liter diesel engines.'
+  },
+  {
+    id: 22,
+    category: 'accessories',
+    brand: 'Gorilla',
+    title: 'Spline Lug Nut Kit',
+    price: 45.00,
+    rating: 4.7,
+    reviews: 512,
+    season: 'N/A',
+    year: '2025',
+    vehicleType: 'Performance',
+    size: 'M12x1.5',
+    image: 'https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&q=80&w=400',
+    description: 'High strength, closed-end spline drive lug nuts ensuring maximum security and durability.'
   }
 ];

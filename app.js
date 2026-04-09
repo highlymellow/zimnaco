@@ -1,6 +1,6 @@
 // Main Application Logic for Zimnaco Auto Forge
 
-document.addEventListener('DOMContentLoaded', () => {
+function initZimnaco() {
     // ── STATE ──
     let state = {
         category: 'tires',
@@ -21,10 +21,54 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ── DOM ELEMENTS ──
-    const productGrid = document.querySelector('.product-grid');
+    let productGrid = document.getElementById('productGrid');
     const resultsTitle = document.querySelector('.results-title');
     const cartCountSpans = document.querySelectorAll('.nav-cart span, .mobile-cart span');
     
+    // Add Mobile Nav Drawer to DOM
+    document.body.insertAdjacentHTML('beforeend', `
+        <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+        <div class="mobile-nav-drawer" id="mobileNavDrawer">
+            <button class="close-mobile-nav" id="closeMobileNav">&times;</button>
+            <nav class="mobile-nav-links">
+                <a href="#store" data-category="tires" class="mobile-nav-cat">Tires</a>
+                <a href="#store" data-category="rims" class="mobile-nav-cat">Rims</a>
+                <a href="#store" data-category="accessories" class="mobile-nav-cat">Accessories</a>
+            </nav>
+        </div>
+    `);
+
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+
+    function openMobileNav() {
+        mobileNavOverlay.classList.add('active');
+        mobileNavDrawer.classList.add('active');
+    }
+    function closeMobileNav() {
+        mobileNavOverlay.classList.remove('active');
+        mobileNavDrawer.classList.remove('active');
+    }
+
+    document.getElementById('hamburgerMenu').addEventListener('click', openMobileNav);
+    document.getElementById('closeMobileNav').addEventListener('click', closeMobileNav);
+    mobileNavOverlay.addEventListener('click', closeMobileNav);
+
+    document.querySelectorAll('.mobile-nav-cat').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const category = e.target.getAttribute('data-category');
+            if (category) {
+                state.category = category;
+                document.querySelectorAll('.nav-links a').forEach(a => a.style.color = 'var(--silver-400)');
+                const desktopLink = document.querySelector(`.nav-links a[data-category="${category}"]`);
+                if (desktopLink) desktopLink.style.color = 'var(--white)';
+                renderProducts();
+                closeMobileNav();
+                document.getElementById('store').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
     // Add Modals to DOM
     document.body.insertAdjacentHTML('beforeend', `
         <!-- Cart Drawer -->
@@ -135,6 +179,16 @@ document.addEventListener('DOMContentLoaded', () => {
             resultsTitle.style.opacity = '1';
         }
         
+        // Toggle filter visibility based on category
+        const seasonFilterGroup = document.querySelector('.filter-group[data-filter-group="season"]');
+        const sizePanel = document.querySelector('.size-selector-panel');
+        if (seasonFilterGroup) {
+            seasonFilterGroup.style.display = state.category === 'tires' ? 'block' : 'none';
+        }
+        if (sizePanel) {
+            sizePanel.style.display = state.category === 'tires' ? 'block' : 'none';
+        }
+
         // Build HTML
         if (filtered.length === 0) {
             productGrid.innerHTML = `
@@ -148,13 +202,15 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+
         productGrid.style.display = 'grid';
         productGrid.innerHTML = filtered.map(p => `
             <div class="product-card reveal visible" data-id="${p.id}">
                 <div class="card-image-wrap" onclick="openProductModal(${p.id})">
+                    ${p.category === 'tires' ? `
                     <div class="card-badge ${p.season === 'Summer' ? 'summer' : p.season === 'Winter' ? 'winter' : 'all'}">
                         ${p.season === 'Summer' ? '☀️' : p.season === 'Winter' ? '❄️' : '⛅'} ${p.season}
-                    </div>
+                    </div>` : ''}
                     <img src="${p.image}" alt="${p.brand} ${p.title}" loading="lazy">
                 </div>
                 <div class="card-brand">${capitalize(p.brand)}</div>
@@ -352,6 +408,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ── CART LOGIC ──
+    function openCart() {
+        renderCartItems();
+        cartDrawer.classList.add('active');
+        cartOverlay.classList.add('active');
+    }
+    window.openCart = openCart;
+
+    function closeCart() {
+        cartDrawer.classList.remove('active');
+        cartOverlay.classList.remove('active');
+    }
+
+    function saveCart() {
+        localStorage.setItem('zimnaco_cart', JSON.stringify(state.cart));
+    }
+
+    function updateCartCount() {
+        const count = state.cart.reduce((acc, item) => acc + item.quantity, 0);
+        cartCountSpans.forEach(span => {
+            if(span.closest('.mobile-cart')) span.textContent = count; 
+            else span.textContent = `Your cart (${count})`;
+        });
+    }
+
+    function renderCartItems() {
+        if (state.cart.length === 0) {
+            cartItemsContainer.innerHTML = '<div class="empty-cart">Your cart is currently empty.</div>';
+            cartTotal.textContent = '$0.00';
+            return;
+        }
+
+        let total = 0;
+        cartItemsContainer.innerHTML = state.cart.map(item => {
+            total += item.price * item.quantity;
+            return `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="cart-item-info">
+                        <h4>${item.brand} ${item.title}</h4>
+                        <div class="cart-item-details">${item.size}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="cart-item-quantity">
+                            <button onclick="updateCartQuantity(${item.id}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="updateCartQuantity(${item.id}, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        cartTotal.textContent = `$${total.toFixed(2)}`;
+    }
+
     function initCartUI() {
         document.querySelectorAll('.nav-cart, .mobile-cart').forEach(btn => {
             btn.addEventListener('click', openCart);
@@ -403,59 +513,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderCartItems();
             }
         }
-    }
-
-    function saveCart() {
-        localStorage.setItem('zimnaco_cart', JSON.stringify(state.cart));
-    }
-
-    function updateCartCount() {
-        const count = state.cart.reduce((acc, item) => acc + item.quantity, 0);
-        cartCountSpans.forEach(span => {
-            if(span.closest('.mobile-cart')) span.textContent = count; 
-            else span.textContent = `Your cart (${count})`;
-        });
-    }
-
-    window.openCart = function() {
-        renderCartItems();
-        cartDrawer.classList.add('active');
-        cartOverlay.classList.add('active');
-    };
-
-    function closeCart() {
-        cartDrawer.classList.remove('active');
-        cartOverlay.classList.remove('active');
-    }
-
-    function renderCartItems() {
-        if (state.cart.length === 0) {
-            cartItemsContainer.innerHTML = '<div class="empty-cart">Your cart is currently empty.</div>';
-            cartTotal.textContent = '$0.00';
-            return;
-        }
-
-        let total = 0;
-        cartItemsContainer.innerHTML = state.cart.map(item => {
-            total += item.price * item.quantity;
-            return `
-                <div class="cart-item">
-                    <img src="${item.image}" alt="${item.title}">
-                    <div class="cart-item-info">
-                        <h4>${item.brand} ${item.title}</h4>
-                        <div class="cart-item-details">${item.size}</div>
-                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-                        <div class="cart-item-quantity">
-                            <button onclick="updateCartQuantity(${item.id}, -1)">-</button>
-                            <span>${item.quantity}</span>
-                            <button onclick="updateCartQuantity(${item.id}, 1)">+</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }).join('');
-        
-        cartTotal.textContent = `$${total.toFixed(2)}`;
     }
 
     window.updateCartQuantity = updateQuantity;
@@ -554,4 +611,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1500);
     };
 
-}); // End DOMContentLoaded
+    // Fallback: ensure grid is never empty after full page load
+    window.addEventListener('load', () => {
+        if (productGrid && !productGrid.querySelector('.product-card')) {
+            renderProducts();
+        }
+    });
+
+} // End initZimnaco
+
+// Robust initialization: handle both fresh and late-loading scenarios
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initZimnaco);
+} else {
+    initZimnaco();
+}

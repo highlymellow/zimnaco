@@ -52,7 +52,7 @@
 
   body {
     font-family: var(--font-body);
-    background-color: var(--black);
+    background-color: var(--navy-900);
     color: var(--black);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -60,15 +60,15 @@
 
   /* ── PRELOADER ── */
   .preloader {
-    position: fixed; inset: 0; background: var(--black); z-index: 9999;
+    position: fixed; inset: 0; background: var(--navy-900); z-index: 9999;
     display: flex; align-items: center; justify-content: center;
     transition: opacity 0.6s ease, visibility 0.6s ease;
   }
   .preloader.hidden { opacity: 0; visibility: hidden; }
   .logo-pulse { width: 220px; animation: pulse 1.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1); }
   @keyframes pulse {
-    0% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(59,99,196,0.2)); }
-    100% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 35px rgba(59,99,196,0.7)); }
+    0% { transform: scale(0.95); opacity: 1; filter: drop-shadow(0 0 24px rgba(107,141,214,0.6)); }
+    100% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 60px rgba(107,141,214,1)) drop-shadow(0 0 20px rgba(59,99,196,0.8)); }
   }
 
   /* ── NAVBAR ── */
@@ -112,8 +112,8 @@
   
   .sidebar { width: 280px; flex-shrink: 0; }
   .filter-group { margin-bottom: 40px; }
-  .filter-header { font-family: var(--font-body); font-size: 16px; font-weight: 600; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--off-white); display: flex; justify-content: space-between; align-items: center; cursor: pointer;}
-  .filter-header svg { width: 16px; height: 16px; stroke: var(--black); stroke-width: 2; fill: none; transition: transform 0.3s; }
+  .filter-header { font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--navy-100); display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: var(--navy-900); }
+  .filter-header svg { width: 14px; height: 14px; stroke: var(--navy-400); stroke-width: 2; fill: none; transition: transform 0.3s; }
   
   .checkbox-label { display: flex; align-items: center; position: relative; padding-left: 32px; margin-bottom: 16px; cursor: pointer; font-size: 15px; color: var(--silver-800); user-select: none; transition: color 0.2s; }
   .checkbox-label:hover { color: var(--black); }
@@ -132,12 +132,12 @@
   .store-header p { color: var(--silver-600); font-size: 16px; }
 
   .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-  .results-title { font-weight: 600; color: var(--silver-700); text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
+  .results-title { font-weight: 700; color: var(--navy-700); text-transform: uppercase; font-size: 12px; letter-spacing: 1.5px; }
   
   .active-filters-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; align-items: center; }
   .filter-category { display: flex; gap: 8px; align-items: center; padding: 4px 0; }
   .cat-name { font-size: 13px; color: var(--silver-600); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
-  .active-tag { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--off-white); border: 1px solid var(--silver-200); border-radius: 20px; font-size: 13px; font-weight: 500; color: var(--black); cursor: pointer; transition: all 0.2s; }
+  .active-tag { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--navy-50); border: 1px solid var(--navy-100); border-radius: 20px; font-size: 13px; font-weight: 500; color: var(--navy-800); cursor: pointer; transition: all 0.2s; }
   .active-tag:hover { background: #fee2e2; border-color: #fca5a5; color: var(--accent-red); }
   .active-tag svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; pointer-events: none; }
 
@@ -147,7 +147,8 @@
   .product-card { position: relative; display: flex; flex-direction: column; transition: transform 0.3s ease; }
   .product-card:hover { transform: translateY(-8px); }
   
-  .card-image-wrap { position: relative; background: var(--off-white); border-radius: 12px; padding: 40px; margin-bottom: 20px; height: 280px; display: flex; align-items: center; justify-content: center; cursor: pointer;}
+  .card-image-wrap { position: relative; background: var(--navy-50); border-radius: 12px; padding: 40px; margin-bottom: 20px; height: 280px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.3s; }
+  .product-card:hover .card-image-wrap { background: var(--navy-100); }
   .card-image-wrap img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); mix-blend-mode: multiply; }
   .product-card:hover .card-image-wrap img { transform: scale(1.05) rotate(2deg); }
   
@@ -167,11 +168,11 @@
   .stars { color: var(--accent-amber); letter-spacing: 2px; }
   .opinions { color: var(--silver-500); }
 
-  .btn--accent { background-color: var(--black); color: var(--white); width: 100%; border-radius: 8px; padding: 14px 24px; gap: 8px; transition: background 0.3s; }
-  .btn--accent:hover { background-color: var(--navy-700); }
+  .btn--accent { background-color: var(--accent-red); color: var(--white); width: 100%; border-radius: 8px; padding: 14px 24px; gap: 8px; transition: all 0.3s; }
+  .btn--accent:hover { background-color: #b91c1c; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(220,38,38,0.3); }
 
   /* ── FOOTER ── */
-  .footer { background: var(--black); color: var(--white); padding: 80px 5% 40px; margin-top: auto; }
+  .footer { background: var(--navy-900); color: var(--white); padding: 80px 5% 40px; margin-top: auto; }
   .footer-container { max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 80px; }
   
   .footer-brand p { color: var(--silver-400); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
@@ -395,9 +396,7 @@
           <!-- Filled densely by Javascript -->
         </div>
 
-        <div class="product-grid" id="productGrid">
-            <!-- Products injected by app.js -->
-        </div>
+        <div class="product-grid" id="productGrid"></div>
 
       </main>
     </div>
