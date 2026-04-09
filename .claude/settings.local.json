@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(wc -l /Users/mb/Desktop/Zimnaco/*.html)",
-      "Bash(wc -c /Users/mb/Desktop/Zimnaco/*.html)"
+      "Bash(wc -c /Users/mb/Desktop/Zimnaco/*.html)",
+      "Bash(ffprobe -v quiet -print_format json -show_format -show_streams /Users/mb/Desktop/Zimnaco/Animated_Logo_Transition_for_Website_Hero.mp4)",
+      "Bash(python3 -c ':*)",
+      "Bash(python3)"
     ]
   }
 }
