@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zimnaco Corporation — Brand Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* ── ZIMNACO BRAND COLORS ── */
+  --navy-900: #0A1244;
+  --navy-800: #111B5E;
+  --navy-700: #1B2A6B;
+  --navy-600: #1E3A8A;
+  --navy-500: #2548A8;
+  --navy-400: #3B63C4;
+  --navy-300: #6B8DD6;
+  --navy-200: #A3BBE8;
+  --navy-100: #D1DDEF;
+  --navy-50:  #EBF0F9;
+
+  --silver-900: #2D2D2D;
+  --silver-800: #4A4A4A;
+  --silver-700: #6B6B6B;
+  --silver-600: #8A8A8A;
+  --silver-500: #A8A8A8;
+  --silver-400: #BCBCBC;
+  --silver-300: #D0D0D0;
+  --silver-200: #E2E2E2;
+  --silver-100: #F0F0F0;
+  --silver-50:  #F8F8F8;
+
+  --chrome-highlight: linear-gradient(135deg, #C0C8D4 0%, #E8ECF0 30%, #FAFBFC 50%, #D4DAE2 70%, #A8B4C4 100%);
+  --chrome-dark: linear-gradient(135deg, #5A6475 0%, #8A95A5 30%, #B0BAC8 50%, #7A8698 70%, #4A5568 100%);
+
+  --white: #FFFFFF;
+  --off-white: #F7F8FA;
+  --black: #0A0A0A;
+
+  --accent-red: #DC2626;
+  --accent-amber: #F59E0B;
+  --accent-green: #16A34A;
+
+  /* ── TYPOGRAPHY ── */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+
+  /* ── SPACING ── */
+  --section-pad: clamp(60px, 8vw, 120px);
+  --page-max: 1200px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--black);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── UTILITY ── */
+.container { max-width: var(--page-max); margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px); }
+.section { padding: var(--section-pad) 0; }
+.section--dark { background: var(--navy-900); color: var(--white); }
+.section--light { background: var(--off-white); }
+.section--navy { background: var(--navy-700); color: var(--white); }
+
+.label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--navy-400);
+  margin-bottom: 16px;
+  display: block;
+}
+.section--dark .label,
+.section--navy .label { color: var(--navy-200); }
+
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; }
+h1 { font-size: clamp(42px, 6vw, 80px); }
+h2 { font-size: clamp(32px, 4vw, 56px); margin-bottom: 24px; }
+h3 { font-size: clamp(22px, 2.5vw, 32px); margin-bottom: 16px; }
+h4 { font-size: 20px; margin-bottom: 12px; }
+
+p { font-size: 16px; line-height: 1.7; color: var(--silver-700); max-width: 640px; }
+.section--dark p,
+.section--navy p { color: var(--navy-200); }
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: var(--navy-700);
+  margin: 32px 0;
+}
+.section--dark .divider { background: var(--navy-400); }
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  background: var(--navy-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(27,42,107,0.6) 0%, transparent 70%),
+    radial-gradient(circle at 80% 20%, rgba(59,99,196,0.15) 0%, transparent 40%);
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--white);
+  animation: fadeUp 1.2s ease-out;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cover-logo {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 40px;
+}
+
+.cover h1 {
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  font-size: clamp(24px, 4vw, 48px);
+  margin-bottom: 8px;
+}
+.cover h1 span {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 16px;
+  font-size: clamp(28px, 5vw, 56px);
+}
+.cover-sub {
+  font-size: 13px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--navy-300);
+  margin-top: 32px;
+  font-weight: 400;
+}
+.cover-year {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--navy-400);
+  margin-top: 60px;
+}
+.cover-line {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--navy-400), transparent);
+  margin: 40px auto 0;
+}
+
+/* ── NAV ── */
+.toc {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--silver-200);
+  padding: 16px 0;
+}
+.toc-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 60px);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.toc-inner::-webkit-scrollbar { display: none; }
+.toc-brand {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--navy-800);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.toc a {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--silver-600);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+.toc a:hover { color: var(--navy-700); }
+
+/* ── GRID LAYOUTS ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ── COLOR SWATCHES ── */
+.swatch-group { margin-bottom: 48px; }
+.swatch-group h4 { margin-bottom: 20px; }
+.swatch-row { display: flex; gap: 0; border-radius: 12px; overflow: hidden; height: 100px; }
+.swatch-row--tall { height: 160px; }
+.swatch {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+  position: relative;
+  transition: flex 0.4s ease;
+  cursor: default;
+}
+.swatch:hover { flex: 2; }
+.swatch-info {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.swatch:hover .swatch-info { opacity: 1; }
+.swatch--light .swatch-info { color: var(--black); }
+.swatch--dark .swatch-info { color: var(--white); }
+
+/* ── LOGO DISPLAY ── */
+.logo-display {
+  background: var(--off-white);
+  border-radius: 16px;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  position: relative;
+}
+.logo-display--dark {
+  background: var(--navy-900);
+}
+.logo-display--navy {
+  background: var(--navy-700);
+}
+.logo-display svg { width: 180px; height: auto; }
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+@media (max-width: 768px) {
+  .logo-grid { grid-template-columns: 1fr; }
+}
+
+/* ── CLEAR SPACE ── */
+.clearspace-demo {
+  background: var(--off-white);
+  border-radius: 16px;
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.clearspace-box {
+  border: 2px dashed var(--navy-300);
+  padding: 40px;
+  position: relative;
+}
+.clearspace-box::before,
+.clearspace-box::after {
+  content: '1x';
+  position: absolute;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--navy-400);
+  letter-spacing: 1px;
+}
+.clearspace-box::before { top: -20px; left: 50%; transform: translateX(-50%); }
+.clearspace-box::after { right: -28px; top: 50%; transform: translateY(-50%); }
+
+/* ── TYPOGRAPHY SPECIMENS ── */
+.type-specimen {
+  background: var(--off-white);
+  border-radius: 16px;
+  padding: 48px;
+  margin-bottom: 24px;
+}
+.type-specimen--dark {
+  background: var(--navy-900);
+  color: var(--white);
+}
+.type-display {
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 1;
+  margin-bottom: 24px;
+}
+.type-alphabet {
+  font-size: 24px;
+  line-height: 1.8;
+  letter-spacing: 2px;
+  color: var(--silver-600);
+  word-break: break-all;
+}
+.type-scale { margin-top: 48px; }
+.type-scale-item {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--silver-200);
+}
+.type-scale-label {
+  width: 120px;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--silver-500);
+}
+.type-scale-sample { line-height: 1.2; }
+
+/* ── PATTERN / TEXTURE ── */
+.pattern-box {
+  border-radius: 16px;
+  overflow: hidden;
+  height: 240px;
+  position: relative;
+}
+
+/* ── DO / DON'T ── */
+.usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+@media (max-width: 768px) { .usage-grid { grid-template-columns: 1fr; } }
+.usage-card {
+  border-radius: 16px;
+  overflow: hidden;
+}
+.usage-card-display {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--off-white);
+}
+.usage-card-label {
+  padding: 16px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.usage-card--do .usage-card-label { background: #ECFDF5; color: var(--accent-green); }
+.usage-card--dont .usage-card-label { background: #FEF2F2; color: var(--accent-red); }
+
+/* ── COMPONENT CARDS ── */
+.component-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid var(--silver-200);
+}
+.section--dark .component-card {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* ── BUTTON SPECIMENS ── */
+.btn-specimen {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.btn--primary {
+  background: var(--navy-700);
+  color: var(--white);
+}
+.btn--primary:hover { background: var(--navy-800); transform: translateY(-1px); }
+.btn--secondary {
+  background: transparent;
+  color: var(--navy-700);
+  border: 2px solid var(--navy-700);
+}
+.btn--accent {
+  background: var(--accent-red);
+  color: var(--white);
+}
+.btn--chrome {
+  background: var(--chrome-highlight);
+  color: var(--navy-900);
+  border: 1px solid var(--silver-300);
+}
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+
+/* ── PHOTOGRAPHY ── */
+.photo-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 16px;
+  margin-top: 32px;
+}
+.photo-grid > :first-child { grid-row: span 2; }
+.photo-card {
+  border-radius: 12px;
+  background: var(--silver-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--silver-500);
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+.photo-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 12px;
+}
+
+/* ── ICONOGRAPHY ── */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+@media (max-width: 768px) { .icon-grid { grid-template-columns: repeat(3, 1fr); } }
+.icon-card {
+  background: var(--off-white);
+  border-radius: 12px;
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.icon-card svg { width: 28px; height: 28px; color: var(--navy-700); }
+.icon-card span {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--silver-600);
+  font-weight: 600;
+}
+
+/* ── BRAND VOICE ── */
+.voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+@media (max-width: 768px) { .voice-grid { grid-template-columns: 1fr; } }
+.voice-card {
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid var(--silver-200);
+  background: var(--white);
+}
+.voice-card h4 { font-family: var(--font-display); }
+.voice-card p { font-size: 14px; color: var(--silver-600); max-width: 100%; }
+
+/* ── GRADIENT SPECIMENS ── */
+.gradient-row { display: flex; gap: 16px; margin-top: 24px; }
+.gradient-chip {
+  flex: 1;
+  height: 120px;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+}
+.gradient-chip span {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--navy-900);
+  color: var(--navy-300);
+  padding: 60px 0;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── STATIONERY MOCKUPS ── */
+.stationery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+@media (max-width: 768px) { .stationery-grid { grid-template-columns: 1fr; } }
+.mockup-card {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Business Card mockup */
+.bcard-front {
+  width: 320px;
+  height: 180px;
+  border-radius: 10px;
+  background: var(--navy-900);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 20px 60px rgba(10,18,68,0.3);
+  position: relative;
+  overflow: hidden;
+}
+.bcard-front::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(59,99,196,0.2) 0%, transparent 70%);
+}
+.bcard-logo { width: 36px; height: 36px; }
+.bcard-info {
+  font-size: 9px;
+  line-height: 1.8;
+  color: var(--navy-300);
+  letter-spacing: 0.5px;
+}
+.bcard-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 2px;
+  letter-spacing: 1px;
+}
+
+/* Letterhead mockup */
+.letterhead {
+  width: 260px;
+  height: 340px;
+  background: var(--white);
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.letterhead-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--navy-700);
+  margin-bottom: 20px;
+}
+.letterhead-logo { width: 28px; height: 28px; }
+.letterhead-brand {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--navy-800);
+}
+.letterhead-lines { flex: 1; }
+.letterhead-line {
+  height: 3px;
+  background: var(--silver-200);
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+.letterhead-line:nth-child(odd) { width: 100%; }
+.letterhead-line:nth-child(even) { width: 75%; }
+.letterhead-line:last-child { width: 40%; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ COVER ═══════════════════ -->
+<section class="cover">
+  <div class="cover-content">
+    <div class="cover-logo">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Zimnaco triangle logo approximation -->
+        <defs>
+          <linearGradient id="logoGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1B2A6B"/>
+            <stop offset="100%" stop-color="#111B5E"/>
+          </linearGradient>
+          <linearGradient id="logoGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#2548A8"/>
+            <stop offset="100%" stop-color="#1B2A6B"/>
+          </linearGradient>
+        </defs>
+        <!-- Simplified triangular Z mark -->
+        <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="url(#logoGrad1)" opacity="0.9"/>
+        <polygon points="40,140 160,140 140,175 60,175" fill="url(#logoGrad2)" opacity="0.85"/>
+        <text x="100" y="138" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="42" font-weight="700" fill="#A3BBE8" opacity="0.7">Z</text>
+      </svg>
+    </div>
+    <h1>
+      <span>ZIMNACO</span>
+      Corporation
+    </h1>
+    <div class="cover-sub">Brand Guidelines &amp; Identity System</div>
+    <div class="cover-year">Version 1.0 — 2026</div>
+    <div class="cover-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="toc">
+  <div class="toc-inner">
+    <div class="toc-brand">Zimnaco</div>
+    <a href="#brand-story">Brand Story</a>
+    <a href="#logo">Logo</a>
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#photography">Photography</a>
+    <a href="#iconography">Iconography</a>
+    <a href="#components">Components</a>
+    <a href="#stationery">Stationery</a>
+    <a href="#voice">Voice</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════ 01 BRAND STORY ═══════════════════ -->
+<section id="brand-story" class="section">
+  <div class="container reveal">
+    <span class="label">01 — Brand Story</span>
+    <h2>Built for the Road. <br><em>Engineered for Trust.</em></h2>
+    <div class="divider"></div>
+    <p>Zimnaco Corporation is a tire manufacturing and distribution enterprise grounded in precision engineering, uncompromising quality, and decades of industrial expertise. We serve drivers, fleet operators, and automotive professionals who demand performance and reliability.</p>
+    <br>
+    <p>Our identity communicates authority, technical competence, and the confidence that comes from building products trusted under the most demanding conditions.</p>
+
+    <div class="grid-3" style="margin-top:60px;">
+      <div class="component-card">
+        <h4>Mission</h4>
+        <p style="max-width:100%;">To deliver world-class tire solutions through advanced engineering, rigorous quality standards, and a distribution network built on dependability.</p>
+      </div>
+      <div class="component-card">
+        <h4>Vision</h4>
+        <p style="max-width:100%;">To be the most trusted tire corporation in the Middle East and beyond, recognized for performance, safety, and innovation.</p>
+      </div>
+      <div class="component-card">
+        <h4>Values</h4>
+        <p style="max-width:100%;">Precision. Durability. Integrity. Performance. Safety. These principles define every product we manufacture and every partnership we build.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 02 LOGO ═══════════════════ -->
+<section id="logo" class="section section--light">
+  <div class="container reveal">
+    <span class="label">02 — Logo System</span>
+    <h2>The Mark</h2>
+    <div class="divider"></div>
+    <p>The Zimnaco mark is a three-dimensional triangular form enclosing the letter Z. The interlocking planes convey structural integrity, engineering precision, and forward momentum. It is always presented in the corporate navy or approved alternates.</p>
+
+    <div class="logo-grid">
+      <div class="logo-display">
+        <div style="text-align:center;">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="160">
+            <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#1B2A6B"/>
+            <polygon points="40,140 160,140 140,175 60,175" fill="#111B5E"/>
+            <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#6B8DD6">Z</text>
+          </svg>
+          <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#8A8A8A; margin-top:16px; font-weight:600;">Primary — Light Background</div>
+        </div>
+      </div>
+      <div class="logo-display logo-display--dark">
+        <div style="text-align:center;">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="160">
+            <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#3B63C4"/>
+            <polygon points="40,140 160,140 140,175 60,175" fill="#2548A8"/>
+            <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#A3BBE8">Z</text>
+          </svg>
+          <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#6B8DD6; margin-top:16px; font-weight:600;">Primary — Dark Background</div>
+        </div>
+      </div>
+      <div class="logo-display" style="background:#fff;">
+        <div style="text-align:center;">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="160">
+            <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#A8A8A8"/>
+            <polygon points="40,140 160,140 140,175 60,175" fill="#8A8A8A"/>
+            <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#BCBCBC">Z</text>
+          </svg>
+          <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#8A8A8A; margin-top:16px; font-weight:600;">Monochrome — Silver</div>
+        </div>
+      </div>
+      <div class="logo-display" style="background:#1B2A6B;">
+        <div style="text-align:center;">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="160">
+            <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#FFFFFF"/>
+            <polygon points="40,140 160,140 140,175 60,175" fill="#D1DDEF"/>
+            <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#EBF0F9">Z</text>
+          </svg>
+          <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#A3BBE8; margin-top:16px; font-weight:600;">Reversed — White</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clear Space -->
+    <h3 style="margin-top:64px;">Clear Space &amp; Minimum Size</h3>
+    <p>The clear space around the logo equals the height of the "Z" character within the mark (referred to as 1x). This zone must remain free of any text, graphic elements, or edge boundaries.</p>
+    <div class="clearspace-demo" style="margin-top:32px;">
+      <div class="clearspace-box">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="120">
+          <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#1B2A6B"/>
+          <polygon points="40,140 160,140 140,175 60,175" fill="#111B5E"/>
+          <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#6B8DD6">Z</text>
+        </svg>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:40px;">
+      <div class="component-card">
+        <h4>Minimum Size</h4>
+        <p style="max-width:100%;">Print: 20mm width. Digital: 32px width. Below these thresholds, use the standalone Z icon without the wordmark.</p>
+      </div>
+      <div class="component-card">
+        <h4>Wordmark Lockup</h4>
+        <p style="max-width:100%;">When the full "ZIMNACO CORPORATION" text accompanies the mark, it must be set in DM Sans 700, letter-spacing 3px, uppercase. The wordmark sits below the mark with 0.5x spacing.</p>
+      </div>
+    </div>
+
+    <!-- Logo Misuse -->
+    <h3 style="margin-top:64px;">Logo Misuse</h3>
+    <div class="usage-grid">
+      <div class="usage-card usage-card--dont">
+        <div class="usage-card-display" style="background:#FEF2F2;">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="100" style="transform:rotate(25deg); opacity:0.6;">
+            <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#1B2A6B"/>
+            <polygon points="40,140 160,140 140,175 60,175" fill="#111B5E"/>
+            <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#6B8DD6">Z</text>
+          </svg>
+        </div>
+        <div class="usage-card-label">✕ Do not rotate the logo</div>
+      </div>
+      <div class="usage-card usage-card--dont">
+        <div class="usage-card-display" style="background:#FEF2F2;">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="100" style="opacity:0.6;">
+            <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#DC2626"/>
+            <polygon points="40,140 160,140 140,175 60,175" fill="#991B1B"/>
+            <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#FCA5A5">Z</text>
+          </svg>
+        </div>
+        <div class="usage-card-label">✕ Do not change logo colors</div>
+      </div>
+      <div class="usage-card usage-card--dont">
+        <div class="usage-card-display" style="background:#FEF2F2;">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="100" style="transform:scaleX(1.5); opacity:0.6;">
+            <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#1B2A6B"/>
+            <polygon points="40,140 160,140 140,175 60,175" fill="#111B5E"/>
+            <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#6B8DD6">Z</text>
+          </svg>
+        </div>
+        <div class="usage-card-label">✕ Do not stretch or distort</div>
+      </div>
+      <div class="usage-card usage-card--dont">
+        <div class="usage-card-display" style="background:#FEF2F2;">
+          <div style="position:relative; width:100px; height:100px;">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="100" style="opacity:0.6; filter:drop-shadow(4px 4px 0 #F59E0B);">
+              <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#1B2A6B"/>
+              <polygon points="40,140 160,140 140,175 60,175" fill="#111B5E"/>
+              <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#6B8DD6">Z</text>
+            </svg>
+          </div>
+        </div>
+        <div class="usage-card-label">✕ Do not add effects or shadows</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 03 COLORS ═══════════════════ -->
+<section id="colors" class="section">
+  <div class="container reveal">
+    <span class="label">03 — Color System</span>
+    <h2>The Palette</h2>
+    <div class="divider"></div>
+    <p>The Zimnaco color system is built on a deep navy foundation with chrome silver accents. The palette communicates precision engineering, industrial strength, and quiet authority.</p>
+
+    <!-- Primary -->
+    <div class="swatch-group" style="margin-top:48px;">
+      <h4>Primary — Corporate Navy</h4>
+      <div class="swatch-row swatch-row--tall">
+        <div class="swatch swatch--dark" style="background:#0A1244;"><div class="swatch-info">900<br>#0A1244</div></div>
+        <div class="swatch swatch--dark" style="background:#111B5E;"><div class="swatch-info">800<br>#111B5E</div></div>
+        <div class="swatch swatch--dark" style="background:#1B2A6B; flex:2;"><div class="swatch-info">700 — PRIMARY<br>#1B2A6B<br>RGB 27, 42, 107</div></div>
+        <div class="swatch swatch--dark" style="background:#1E3A8A;"><div class="swatch-info">600<br>#1E3A8A</div></div>
+        <div class="swatch swatch--dark" style="background:#2548A8;"><div class="swatch-info">500<br>#2548A8</div></div>
+        <div class="swatch swatch--light" style="background:#3B63C4;"><div class="swatch-info">400<br>#3B63C4</div></div>
+        <div class="swatch swatch--light" style="background:#6B8DD6;"><div class="swatch-info">300<br>#6B8DD6</div></div>
+        <div class="swatch swatch--light" style="background:#A3BBE8;"><div class="swatch-info">200<br>#A3BBE8</div></div>
+        <div class="swatch swatch--light" style="background:#D1DDEF;"><div class="swatch-info">100<br>#D1DDEF</div></div>
+        <div class="swatch swatch--light" style="background:#EBF0F9;"><div class="swatch-info">50<br>#EBF0F9</div></div>
+      </div>
+    </div>
+
+    <!-- Secondary -->
+    <div class="swatch-group">
+      <h4>Secondary — Chrome Silver</h4>
+      <div class="swatch-row">
+        <div class="swatch swatch--dark" style="background:#2D2D2D;"><div class="swatch-info">900<br>#2D2D2D</div></div>
+        <div class="swatch swatch--dark" style="background:#4A4A4A;"><div class="swatch-info">800<br>#4A4A4A</div></div>
+        <div class="swatch swatch--dark" style="background:#6B6B6B;"><div class="swatch-info">700<br>#6B6B6B</div></div>
+        <div class="swatch swatch--light" style="background:#8A8A8A;"><div class="swatch-info">600<br>#8A8A8A</div></div>
+        <div class="swatch swatch--light" style="background:#A8A8A8;"><div class="swatch-info">500<br>#A8A8A8</div></div>
+        <div class="swatch swatch--light" style="background:#BCBCBC;"><div class="swatch-info">400<br>#BCBCBC</div></div>
+        <div class="swatch swatch--light" style="background:#D0D0D0;"><div class="swatch-info">300<br>#D0D0D0</div></div>
+        <div class="swatch swatch--light" style="background:#E2E2E2;"><div class="swatch-info">200<br>#E2E2E2</div></div>
+        <div class="swatch swatch--light" style="background:#F0F0F0;"><div class="swatch-info">100<br>#F0F0F0</div></div>
+        <div class="swatch swatch--light" style="background:#F8F8F8;"><div class="swatch-info">50<br>#F8F8F8</div></div>
+      </div>
+    </div>
+
+    <!-- Accent -->
+    <div class="swatch-group">
+      <h4>Functional Accents</h4>
+      <div style="display:flex; gap:16px;">
+        <div style="flex:1; height:100px; border-radius:12px; background:#DC2626; display:flex; align-items:flex-end; padding:12px;">
+          <div style="font-size:10px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#fff;">Action Red<br>#DC2626</div>
+        </div>
+        <div style="flex:1; height:100px; border-radius:12px; background:#F59E0B; display:flex; align-items:flex-end; padding:12px;">
+          <div style="font-size:10px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#fff;">Caution Amber<br>#F59E0B</div>
+        </div>
+        <div style="flex:1; height:100px; border-radius:12px; background:#16A34A; display:flex; align-items:flex-end; padding:12px;">
+          <div style="font-size:10px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#fff;">Success Green<br>#16A34A</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gradients -->
+    <div class="swatch-group">
+      <h4>Brand Gradients</h4>
+      <div class="gradient-row">
+        <div class="gradient-chip" style="background:linear-gradient(135deg, #0A1244 0%, #1B2A6B 50%, #2548A8 100%);">
+          <span style="color:#A3BBE8;">Navy Depth</span>
+        </div>
+        <div class="gradient-chip" style="background:linear-gradient(135deg, #C0C8D4 0%, #E8ECF0 30%, #FAFBFC 50%, #D4DAE2 70%, #A8B4C4 100%);">
+          <span style="color:#4A4A4A;">Chrome</span>
+        </div>
+        <div class="gradient-chip" style="background:linear-gradient(135deg, #1B2A6B 0%, #3B63C4 100%);">
+          <span style="color:#D1DDEF;">Royal Shift</span>
+        </div>
+        <div class="gradient-chip" style="background:linear-gradient(135deg, #0A1244 0%, #111B5E 50%, #0A1244 100%); border:1px solid #1B2A6B;">
+          <span style="color:#6B8DD6;">Midnight</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Ratios -->
+    <h3 style="margin-top:48px;">Color Distribution</h3>
+    <p>Apply color in these approximate ratios for marketing and UI contexts.</p>
+    <div style="display:flex; height:48px; border-radius:8px; overflow:hidden; margin-top:24px;">
+      <div style="flex:6; background:#1B2A6B; display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:600; letter-spacing:1px;">60% Navy</div>
+      <div style="flex:2.5; background:#D0D0D0; display:flex; align-items:center; justify-content:center; color:#2D2D2D; font-size:11px; font-weight:600; letter-spacing:1px;">25% Silver</div>
+      <div style="flex:1; background:#FFFFFF; display:flex; align-items:center; justify-content:center; color:#6B6B6B; font-size:11px; font-weight:600; letter-spacing:1px; border:1px solid #E2E2E2;">10% White</div>
+      <div style="flex:0.5; background:#DC2626; display:flex; align-items:center; justify-content:center; color:#fff; font-size:10px; font-weight:600;">5%</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 04 TYPOGRAPHY ═══════════════════ -->
+<section id="typography" class="section section--dark">
+  <div class="container reveal">
+    <span class="label">04 — Typography</span>
+    <h2 style="color:#fff;">Type System</h2>
+    <div class="divider"></div>
+    <p>Two type families serve distinct roles. Playfair Display brings editorial authority to headlines and display contexts. DM Sans provides clarity and technical precision for body text, UI, and data.</p>
+
+    <!-- Display Font -->
+    <div class="type-specimen" style="margin-top:48px;">
+      <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#8A8A8A; margin-bottom:16px; font-weight:600;">Display — Playfair Display</div>
+      <div class="type-display" style="font-family:'Playfair Display',serif;">Precision in Motion</div>
+      <div class="type-alphabet" style="font-family:'Playfair Display',serif;">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</div>
+    </div>
+
+    <!-- Body Font -->
+    <div class="type-specimen">
+      <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#8A8A8A; margin-bottom:16px; font-weight:600;">Body — DM Sans</div>
+      <div class="type-display" style="font-family:'DM Sans',sans-serif; font-weight:300;">Engineering Trust</div>
+      <div class="type-alphabet" style="font-family:'DM Sans',sans-serif;">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</div>
+    </div>
+
+    <!-- Type Scale -->
+    <div class="type-scale" style="margin-top:48px;">
+      <h3 style="color:#fff; margin-bottom:32px;">Type Scale</h3>
+      <div class="type-scale-item" style="border-color:rgba(255,255,255,0.1);">
+        <div class="type-scale-label">Display XL</div>
+        <div class="type-scale-sample" style="font-family:'Playfair Display',serif; font-size:56px; color:#fff;">Zimnaco 56px</div>
+      </div>
+      <div class="type-scale-item" style="border-color:rgba(255,255,255,0.1);">
+        <div class="type-scale-label">Heading 1</div>
+        <div class="type-scale-sample" style="font-family:'Playfair Display',serif; font-size:40px; color:#fff;">Heading One 40px</div>
+      </div>
+      <div class="type-scale-item" style="border-color:rgba(255,255,255,0.1);">
+        <div class="type-scale-label">Heading 2</div>
+        <div class="type-scale-sample" style="font-family:'Playfair Display',serif; font-size:32px; color:#fff;">Heading Two 32px</div>
+      </div>
+      <div class="type-scale-item" style="border-color:rgba(255,255,255,0.1);">
+        <div class="type-scale-label">Heading 3</div>
+        <div class="type-scale-sample" style="font-family:'DM Sans',sans-serif; font-size:24px; font-weight:600; color:#fff;">Heading Three 24px</div>
+      </div>
+      <div class="type-scale-item" style="border-color:rgba(255,255,255,0.1);">
+        <div class="type-scale-label">Body</div>
+        <div class="type-scale-sample" style="font-family:'DM Sans',sans-serif; font-size:16px; color:#A3BBE8;">Body text for paragraphs and general reading — 16px / 1.7</div>
+      </div>
+      <div class="type-scale-item" style="border-color:rgba(255,255,255,0.1);">
+        <div class="type-scale-label">Caption</div>
+        <div class="type-scale-sample" style="font-family:'DM Sans',sans-serif; font-size:13px; color:#6B8DD6;">Caption and metadata text — 13px</div>
+      </div>
+      <div class="type-scale-item" style="border-color:rgba(255,255,255,0.1);">
+        <div class="type-scale-label">Label</div>
+        <div class="type-scale-sample" style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#6B8DD6;">LABEL / OVERLINE — 11PX TRACKING 2PX</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 05 PHOTOGRAPHY ═══════════════════ -->
+<section id="photography" class="section section--light">
+  <div class="container reveal">
+    <span class="label">05 — Photography &amp; Imagery</span>
+    <h2>Visual Direction</h2>
+    <div class="divider"></div>
+    <p>Photography should feel industrial, precise, and cinematic. Favor low angles, dramatic lighting, and tight crops that emphasize texture, material, and engineering detail. Avoid stock photography aesthetics.</p>
+
+    <div class="grid-3" style="margin-top:48px;">
+      <div class="component-card">
+        <h4>Mood</h4>
+        <p style="max-width:100%;">Cinematic. Controlled. High-contrast. Images should feel as if they were shot for a premium automotive campaign. Dark backgrounds with selective lighting are preferred.</p>
+      </div>
+      <div class="component-card">
+        <h4>Subjects</h4>
+        <p style="max-width:100%;">Tires in context: on vehicles, on road surfaces, in testing environments. Close-up tread detail. Manufacturing processes. Road textures. Never isolated product shots on plain white.</p>
+      </div>
+      <div class="component-card">
+        <h4>Color Treatment</h4>
+        <p style="max-width:100%;">Desaturated with selective color. The navy and chrome palette should influence post-production. Warm highlights, cool shadows. Blue-tinted grading is acceptable.</p>
+      </div>
+    </div>
+
+    <div class="photo-grid" style="margin-top:40px;">
+      <div class="photo-card" style="background: linear-gradient(135deg, #0A1244, #1B2A6B);">
+        <span style="color:#6B8DD6;">Tread Close-Up<br>Cinematic Lighting</span>
+      </div>
+      <div class="photo-card" style="background: linear-gradient(135deg, #2D2D2D, #4A4A4A);">
+        <span>Manufacturing</span>
+      </div>
+      <div class="photo-card" style="background: linear-gradient(135deg, #111B5E, #2548A8);">
+        <span style="color:#A3BBE8;">Road Texture</span>
+      </div>
+      <div class="photo-card" style="background: linear-gradient(135deg, #4A4A4A, #6B6B6B);">
+        <span>Vehicles</span>
+      </div>
+      <div class="photo-card" style="background: linear-gradient(135deg, #1B2A6B, #0A1244);">
+        <span style="color:#6B8DD6;">Detail</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 06 ICONOGRAPHY ═══════════════════ -->
+<section id="iconography" class="section">
+  <div class="container reveal">
+    <span class="label">06 — Iconography</span>
+    <h2>Icon System</h2>
+    <div class="divider"></div>
+    <p>Icons use a 2px stroke weight, rounded caps and joins, on a 24×24 grid. They must feel technical and precise without being decorative. Solid fills are reserved for active/selected states.</p>
+
+    <div class="icon-grid">
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>Delivery</span>
+      </div>
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Safety</span>
+      </div>
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        <span>Service</span>
+      </div>
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <span>Fleet</span>
+      </div>
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Performance</span>
+      </div>
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Locate</span>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:48px;">
+      <div class="component-card">
+        <h4>Stroke Icons (Default)</h4>
+        <p style="max-width:100%;">Used in navigation, body content, and informational contexts. 2px stroke, navy-700 on light backgrounds, navy-200 on dark backgrounds.</p>
+      </div>
+      <div class="component-card">
+        <h4>Filled Icons (Active)</h4>
+        <p style="max-width:100%;">Used for active navigation items, selected states, and CTAs. Solid fill in navy-700 or action red depending on context.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 07 COMPONENTS ═══════════════════ -->
+<section id="components" class="section section--navy">
+  <div class="container reveal">
+    <span class="label">07 — UI Components</span>
+    <h2 style="color:#fff;">Component Library</h2>
+    <div class="divider"></div>
+    <p>Core UI patterns for digital products and the Zimnaco web ecosystem.</p>
+
+    <!-- Buttons -->
+    <h3 style="color:#fff; margin-top:48px;">Buttons</h3>
+    <div class="btn-row">
+      <button class="btn-specimen btn--primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        Buy Now
+      </button>
+      <button class="btn-specimen btn--secondary" style="color:#fff; border-color:#fff;">Explore Tires</button>
+      <button class="btn-specimen btn--accent">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        Add to Cart
+      </button>
+      <button class="btn-specimen btn--chrome">Chrome Variant</button>
+    </div>
+
+    <!-- Cards -->
+    <h3 style="color:#fff; margin-top:64px;">Product Card</h3>
+    <div style="max-width:300px; margin-top:24px;">
+      <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.15);">
+        <div style="height:200px; background:linear-gradient(135deg, #F0F0F0, #E2E2E2); display:flex; align-items:center; justify-content:center;">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#A8A8A8" stroke-width="1"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div style="padding:20px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span style="font-size:10px; font-weight:600; letter-spacing:1px; text-transform:uppercase; background:#EBF0F9; color:#1B2A6B; padding:3px 8px; border-radius:4px;">All Season</span>
+          </div>
+          <div style="font-weight:600; font-size:16px; color:#0A0A0A;">Continental</div>
+          <div style="font-size:13px; color:#8A8A8A; margin-bottom:12px;">VanContact Eco 205/55R16</div>
+          <div style="display:flex; align-items:baseline; gap:4px; margin-bottom:12px;">
+            <span style="font-size:24px; font-weight:700; color:#0A1244;">$136</span>
+            <span style="font-size:14px; color:#8A8A8A;">.99</span>
+            <span style="font-size:12px; color:#8A8A8A; margin-left:4px;">per each</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; margin-bottom:16px;">
+            <span style="color:#F59E0B;">★★★★★</span>
+            <span style="font-size:12px; color:#8A8A8A;">412 opinions</span>
+          </div>
+          <button class="btn-specimen btn--accent" style="width:100%; justify-content:center; padding:12px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Inputs -->
+    <h3 style="color:#fff; margin-top:64px;">Form Elements</h3>
+    <div style="max-width:400px; margin-top:24px;">
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#A3BBE8; margin-bottom:8px;">Search Tires</label>
+        <div style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:8px; padding:12px 16px; color:#fff; font-size:14px; display:flex; align-items:center; gap:10px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B8DD6" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span style="color:#6B8DD6;">205/55R16</span>
+        </div>
+      </div>
+      <div style="display:flex; gap:12px;">
+        <div style="flex:1; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:8px; padding:12px 16px; color:#fff; font-size:14px; text-align:center;">
+          <div style="font-size:10px; color:#6B8DD6; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Width</div>
+          205
+        </div>
+        <div style="flex:1; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:8px; padding:12px 16px; color:#fff; font-size:14px; text-align:center;">
+          <div style="font-size:10px; color:#6B8DD6; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Profile</div>
+          55
+        </div>
+        <div style="flex:1; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:8px; padding:12px 16px; color:#fff; font-size:14px; text-align:center;">
+          <div style="font-size:10px; color:#6B8DD6; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Rim</div>
+          16
+        </div>
+      </div>
+    </div>
+
+    <!-- Spacing -->
+    <h3 style="color:#fff; margin-top:64px;">Spacing System</h3>
+    <p>Based on an 8px grid. All spacing values are multiples of 8.</p>
+    <div style="display:flex; align-items:flex-end; gap:16px; margin-top:24px;">
+      <div style="text-align:center;" title="4px">
+        <div style="width:4px; height:4px; background:#3B63C4; border-radius:1px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">4</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:8px; height:8px; background:#3B63C4; border-radius:2px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">8</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:16px; height:16px; background:#3B63C4; border-radius:2px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">16</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:24px; height:24px; background:#3B63C4; border-radius:3px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">24</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:32px; height:32px; background:#3B63C4; border-radius:3px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">32</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:48px; height:48px; background:#3B63C4; border-radius:4px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">48</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:64px; height:64px; background:#3B63C4; border-radius:4px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">64</div>
+      </div>
+    </div>
+
+    <!-- Border Radius -->
+    <h3 style="color:#fff; margin-top:64px;">Border Radius</h3>
+    <div style="display:flex; gap:24px; margin-top:24px;">
+      <div style="text-align:center;">
+        <div style="width:80px; height:80px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:4px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">4px — Tags</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:80px; height:80px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:8px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">8px — Buttons</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:80px; height:80px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:12px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">12px — Cards</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:80px; height:80px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:16px;"></div>
+        <div style="font-size:10px; color:#6B8DD6; margin-top:8px;">16px — Panels</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 08 STATIONERY ═══════════════════ -->
+<section id="stationery" class="section section--light">
+  <div class="container reveal">
+    <span class="label">08 — Stationery &amp; Applications</span>
+    <h2>Brand in Context</h2>
+    <div class="divider"></div>
+    <p>Consistent application across touchpoints reinforces brand recognition. Below are core stationery items demonstrating the identity system.</p>
+
+    <div class="stationery-grid">
+      <!-- Business Card -->
+      <div class="mockup-card" style="background: linear-gradient(135deg, #E2E2E2, #F0F0F0);">
+        <div class="bcard-front">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="bcard-logo">
+            <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#3B63C4"/>
+            <polygon points="40,140 160,140 140,175 60,175" fill="#2548A8"/>
+            <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#A3BBE8">Z</text>
+          </svg>
+          <div>
+            <div class="bcard-name">AHMED AL-RASHID</div>
+            <div class="bcard-info">
+              Regional Sales Director<br>
+              +964 770 123 4567<br>
+              ahmed@zimnaco.com
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letterhead -->
+      <div class="mockup-card" style="background: linear-gradient(135deg, #D1DDEF, #EBF0F9);">
+        <div class="letterhead">
+          <div class="letterhead-header">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="letterhead-logo">
+              <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#1B2A6B"/>
+              <polygon points="40,140 160,140 140,175 60,175" fill="#111B5E"/>
+              <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#6B8DD6">Z</text>
+            </svg>
+            <div class="letterhead-brand">Zimnaco</div>
+          </div>
+          <div class="letterhead-lines">
+            <div class="letterhead-line"></div>
+            <div class="letterhead-line"></div>
+            <div class="letterhead-line"></div>
+            <div class="letterhead-line"></div>
+            <div class="letterhead-line"></div>
+            <div class="letterhead-line"></div>
+            <div class="letterhead-line"></div>
+            <div class="letterhead-line"></div>
+            <div class="letterhead-line"></div>
+            <div class="letterhead-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Envelope -->
+      <div class="mockup-card" style="background: linear-gradient(135deg, #E2E2E2, #F0F0F0);">
+        <div style="width:320px; height:160px; background:#fff; border-radius:4px; box-shadow:0 10px 40px rgba(0,0,0,0.08); padding:24px; position:relative; overflow:hidden;">
+          <div style="position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #0A1244, #1B2A6B, #2548A8);"></div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+              <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#1B2A6B"/>
+              <polygon points="40,140 160,140 140,175 60,175" fill="#111B5E"/>
+              <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#6B8DD6">Z</text>
+            </svg>
+            <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#0A1244;">Zimnaco Corporation</div>
+          </div>
+          <div style="font-size:8px; color:#8A8A8A; margin-top:4px; margin-left:34px;">Sulaymaniyah, Kurdistan Region, Iraq</div>
+        </div>
+      </div>
+
+      <!-- Email Signature -->
+      <div class="mockup-card" style="background: linear-gradient(135deg, #E2E2E2, #F8F8F8);">
+        <div style="width:320px; background:#fff; border-radius:4px; box-shadow:0 10px 40px rgba(0,0,0,0.08); padding:20px;">
+          <div style="display:flex; gap:16px; padding-top:12px; border-top:3px solid #1B2A6B;">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="40" height="40" style="flex-shrink:0;">
+              <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#1B2A6B"/>
+              <polygon points="40,140 160,140 140,175 60,175" fill="#111B5E"/>
+              <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#6B8DD6">Z</text>
+            </svg>
+            <div>
+              <div style="font-size:13px; font-weight:700; color:#0A1244;">Ahmed Al-Rashid</div>
+              <div style="font-size:10px; color:#1B2A6B; margin-bottom:6px;">Regional Sales Director</div>
+              <div style="font-size:9px; color:#8A8A8A; line-height:1.6;">
+                +964 770 123 4567<br>
+                ahmed@zimnaco.com<br>
+                www.zimnaco.com
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 09 VOICE ═══════════════════ -->
+<section id="voice" class="section">
+  <div class="container reveal">
+    <span class="label">09 — Brand Voice</span>
+    <h2>How We Speak</h2>
+    <div class="divider"></div>
+    <p>The Zimnaco voice is technical, assured, and direct. We speak with the confidence of engineers who know their product. We do not oversell. We state what we do and let performance speak.</p>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <h4>Authoritative</h4>
+        <p>We speak from expertise. Every claim is backed by engineering data, testing results, or proven performance. We never hedge unnecessarily.</p>
+      </div>
+      <div class="voice-card">
+        <h4>Technical</h4>
+        <p>We use precise language. Tire specifications, materials science, and performance metrics are communicated clearly without dumbing down.</p>
+      </div>
+      <div class="voice-card">
+        <h4>Direct</h4>
+        <p>Short sentences. Active voice. No filler. The reader should feel they are getting the information they need without waste.</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:48px;">
+      <div class="component-card">
+        <h4 style="color:var(--accent-green);">✓ Do Say</h4>
+        <p style="max-width:100%; font-style:italic;">"Engineered for wet traction on regional highways. Tested at 120km/h on standing water. Stops 12% shorter than the category average."</p>
+      </div>
+      <div class="component-card">
+        <h4 style="color:var(--accent-red);">✕ Don't Say</h4>
+        <p style="max-width:100%; font-style:italic;">"Our amazing tires will revolutionize your driving experience with incredible innovation and unbeatable performance!!!"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="48" height="48" style="margin-bottom:24px;">
+      <polygon points="100,20 180,160 140,160 100,90 60,160 20,160" fill="#3B63C4"/>
+      <polygon points="40,140 160,140 140,175 60,175" fill="#2548A8"/>
+      <text x="100" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="42" font-weight="700" fill="#A3BBE8">Z</text>
+    </svg>
+    <div style="letter-spacing:4px; text-transform:uppercase; font-weight:600;">Zimnaco Corporation</div>
+    <div style="margin-top:8px; color:#3B63C4; font-size:12px;">Brand Guidelines v1.0 — 2026 — Confidential</div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); }});
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
