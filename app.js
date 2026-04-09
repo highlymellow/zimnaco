@@ -60,6 +60,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const productModalOverlay = document.getElementById('productModalOverlay');
     const productModalContent = document.getElementById('productModalContent');
 
+    window.closeProductModalApp = function() {
+        productModal.classList.remove('active');
+        productModalOverlay.classList.remove('active');
+    };
+
+    document.getElementById('closeProductModal').addEventListener('click', window.closeProductModalApp);
+    productModalOverlay.addEventListener('click', window.closeProductModalApp);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            window.closeProductModalApp();
+            closeCart();
+        }
+    });
+
     // ── INITIALIZATION ──
     initNav();
     initFilters();
@@ -254,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.filter-header').forEach(header => {
             header.addEventListener('click', (e) => {
                 const group = e.currentTarget.closest('.filter-group');
+                if(!group || !group.hasAttribute('data-filter-group')) return;
                 group.classList.toggle('collapsed');
             });
         });
@@ -468,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     <div class="specs-table">
                         <div class="spec-row"><span>Category:</span><span>${capitalize(product.category)}</span></div>
-                        <div class="spec-row"><span>Season:</span><span>${capitalize(product.season)}</span></div>
+                        ${product.category === 'tires' ? `<div class="spec-row"><span>Season:</span><span>${capitalize(product.season)}</span></div>` : ''}
                         <div class="spec-row"><span>Vehicle Type:</span><span>${capitalize(product.vehicleType)}</span></div>
                         <div class="spec-row"><span>Size:</span><span>${product.size}</span></div>
                         <div class="spec-row"><span>Production Year:</span><span>${product.year}</span></div>
@@ -508,16 +523,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addToCartFromModal = function(id) {
         const qty = parseInt(document.getElementById('modalQty').value);
         addToCart(id, qty);
-        closeProductDetailsModal();
+        window.closeProductModalApp();
     };
-
-    function closeProductDetailsModal() {
-        productModal.classList.remove('active');
-        productModalOverlay.classList.remove('active');
-    }
-
-    document.getElementById('closeProductModal').addEventListener('click', closeProductDetailsModal);
-    productModalOverlay.addEventListener('click', closeProductDetailsModal);
 
     // ── DEMO CHECKOUT ──
     window.processDemoCheckout = function() {

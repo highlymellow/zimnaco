@@ -11,7 +11,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '185/65 R15',
-    image: 'https://images.unsplash.com/photo-1599406086771-47fb2bf12a7d?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/tire,car?lock=1',
     description: 'A summer tire perfectly adapted for light commercial vehicles and vans. Optimized rolling resistance for excellent fuel efficiency.'
   },
   {
@@ -26,7 +26,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '205/55 R16',
-    image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/tire,car?lock=2',
     description: 'The all-season touring tire built to help you master your journey, no matter the season. Best-in-class wet grip.'
   },
   {
@@ -41,7 +41,7 @@ const products = [
     year: '2025',
     vehicleType: 'Delivery / Van',
     size: '195/70 R15',
-    image: 'https://images.unsplash.com/photo-1600705054366-06eb1af52e1c?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/tire,car?lock=3',
     description: 'Safety in all weather conditions, excellent mileage, and robustness. A highly durable commercial tire.'
   },
   {
@@ -56,7 +56,7 @@ const products = [
     year: '2024',
     vehicleType: '4x4',
     size: '225/60 R18',
-    image: 'https://images.unsplash.com/photo-1590487538946-bdeb26fba471?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/tire,car?lock=4',
     description: 'Exceptional grip and safety: 1st in dry and wet braking. Specially designed for premium SUVs.'
   },
   {
@@ -71,7 +71,7 @@ const products = [
     year: '2026',
     vehicleType: 'Performance',
     size: '245/45 R19',
-    image: 'https://images.unsplash.com/photo-1579731454508-3abeb5c83fbf?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/tire,car?lock=5',
     description: 'The highest level of winter performance codeveloped with the best car makers. Unrivalled snow control.'
   },
   {
@@ -86,7 +86,7 @@ const products = [
     year: '2025',
     vehicleType: 'Standard car',
     size: '235/40 R18',
-    image: 'https://images.unsplash.com/photo-1598287515152-4424754ac00a?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/tire,car?lock=6',
     description: 'Luxurious comfort with superior wet braking. Refined styling for the true enthusiast.'
   },
   {
@@ -101,7 +101,7 @@ const products = [
     year: '2024',
     vehicleType: 'Performance',
     size: '225/45 R17',
-    image: 'https://images.unsplash.com/photo-1610444585141-831e7844cc96?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/tire,car?lock=7',
     description: 'Advanced 4D Nano Design tread compound. Maximized grip and wear performance for sports cars.'
   },
   {
@@ -116,7 +116,7 @@ const products = [
     year: '2026',
     vehicleType: 'Standard car',
     size: '205/55 R16',
-    image: 'https://images.unsplash.com/photo-1517524956381-8ed0cd19bf08?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/tire,car?lock=8',
     description: 'Perfect winter performance under any condition. Excellent snow traction and braking.'
   },
   {
@@ -131,7 +131,7 @@ const products = [
     year: '2025',
     vehicleType: 'Performance',
     size: '245/40 R18',
-    image: 'https://images.unsplash.com/photo-1590487373801-9a997d4c2edb?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/tire,car?lock=9',
     description: 'A champion in grip and steering precision. Designed to deliver an engaging driving experience.'
   },
   {
@@ -146,7 +146,7 @@ const products = [
     year: '2026',
     vehicleType: '4x4',
     size: '265/70 R17',
-    image: 'https://images.unsplash.com/photo-1563200781-54de5c2a1ce3?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/tire,car?lock=10',
     description: 'The ultimate all-terrain tire built to conquer any surface. Long-lasting treadwear.'
   },
   {
@@ -157,11 +157,11 @@ const products = [
     price: 1250.00,
     rating: 5,
     reviews: 120,
-    season: 'All year',
+    season: 'N/A',
     year: '2026',
     vehicleType: 'Performance',
-    size: '19 inch',
-    image: 'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=400',
+    size: '19x8.5 5x112 ET45',
+    image: 'https://loremflickr.com/400/400/alloy,wheel?lock=11',
     description: 'Classic multi-spoke design reborn in a modern 2-piece forged configuration.'
   },
   {
@@ -172,11 +172,11 @@ const products = [
     price: 345.50,
     rating: 4.9,
     reviews: 840,
-    season: 'All year',
+    season: 'N/A',
     year: '2026',
     vehicleType: 'Performance',
-    size: '18 inch',
-    image: 'https://images.unsplash.com/photo-1581452292770-571216d1ba56?auto=format&fit=crop&q=80&w=400',
+    size: '18x9.5 5x114.3 ET38',
+    image: 'https://loremflickr.com/400/400/alloy,wheel?lock=12',
     description: 'Legendary lightweight racing wheel developed using Enkei’s MAT process.'
   },
   {
@@ -187,11 +187,11 @@ const products = [
     price: 24.99,
     rating: 4.5,
     reviews: 215,
-    season: 'All year',
+    season: 'N/A',
     year: '2026',
     vehicleType: 'Standard car',
     size: 'Universal',
-    image: 'https://images.unsplash.com/photo-1605230985854-ce523c961ebd?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/car,dashboard?lock=13',
     description: 'Accurately measure and maintain ideal tire pressure to enhance safety and fuel efficiency.'
   },
   {
@@ -202,11 +202,11 @@ const products = [
     price: 15.99,
     rating: 4.8,
     reviews: 932,
-    season: 'All year',
+    season: 'N/A',
     year: '2026',
     vehicleType: 'Standard car',
     size: '15 oz',
-    image: 'https://images.unsplash.com/photo-1622177301033-b152ebba9261?auto=format&fit=crop&q=80&w=400',
+    image: 'https://loremflickr.com/400/400/cleaning,car?lock=14',
     description: 'Deep, dark, and glossy synthetic polymer formula provides a long-lasting wet look.'
   }
 ];
